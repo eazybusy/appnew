@@ -1,0 +1,1441 @@
+import { Category } from '../types';
+
+export const CULTURE_CATEGORY: Category = {
+    id: 'culture',
+    name: { ka: '🎨🎭 ხელოვნება და კულტურა', en: '🎨🎭 Art and Culture' },
+    icon: '🎨🎭',
+    subCategories: [
+        {
+            id: 'architecture-design',
+            name: { ka: '🏛️ არქიტექტურა და დიზაინი', en: '🏛️ Architecture and Design' },
+            sections: [
+                {
+                    id: 'architecture-history-styles',
+                    name: { ka: '📜 I. არქიტექტურის ისტორია და სტილები', en: '📜 I. History and Styles of Architecture' },
+                    subSections: [
+                        {
+                            id: 'ancient-architecture',
+                            name: { ka: '🏺 ანტიკური არქიტექტურა (ეგვიპტური, ბერძნული, რომაული)', en: '🏺 Ancient Architecture (Egyptian, Greek, Roman)' },
+                            keywords: [
+                                { id: 'agora', name: { ka: 'აგორა', en: 'Agora' } },
+                                { id: 'aqueduct', name: { ka: 'აკვედუკი', en: 'Aqueduct' } },
+                                { id: 'acropolis', name: { ka: 'აკროპოლისი', en: 'Acropolis' } },
+                                { id: 'amphitheater', name: { ka: 'ამფითეატრი', en: 'Amphitheater' } },
+                                { id: 'architrave', name: { ka: 'არქიტრავი', en: 'Architrave' } },
+                                { id: 'basilica-ancient', name: { ka: 'ბაზილიკა', en: 'Basilica' } },
+                                { id: 'dome', name: { ka: 'გუმბათი', en: 'Dome' } },
+                                { id: 'ziggurat', name: { ka: 'ზიკურატი', en: 'Ziggurat' } },
+                                { id: 'arch', name: { ka: 'თაღი', en: 'Arch' } },
+                                { id: 'thermae', name: { ka: 'თერმა', en: 'Thermae' } },
+                                { id: 'capital-arch', name: { ka: 'კაპიტელი', en: 'Capital' } },
+                                { id: 'caryatid', name: { ka: 'კარიატიდი', en: 'Caryatid' } },
+                                { id: 'colosseum', name: { ka: 'კოლიზეუმი', en: 'Colosseum' } },
+                                { id: 'colonnade', name: { ka: 'კოლონადა', en: 'Colonnade' } },
+                                { id: 'mausoleum', name: { ka: 'მავზოლეუმი', en: 'Mausoleum' } },
+                                { id: 'obelisk', name: { ka: 'ობელისკი', en: 'Obelisk' } },
+                                { id: 'order-arch', name: { ka: 'ორდერი (დორიული, იონური, კორინთული)', en: 'Order (Doric, Ionic, Corinthian)' } },
+                                { id: 'pantheon', name: { ka: 'პანთეონი', en: 'Pantheon' } },
+                                { id: 'peristyle', name: { ka: 'პერისტილი', en: 'Peristyle' } },
+                                { id: 'pyramid', name: { ka: 'პირამიდა', en: 'Pyramid' } },
+                                { id: 'portico', name: { ka: 'პორტიკი', en: 'Portico' } },
+                                { id: 'propylaea', name: { ka: 'პროპილეა', en: 'Propylaea' } },
+                                { id: 'sculpture-arch', name: { ka: 'სკულპტურა', en: 'Sculpture' } },
+                                { id: 'stoa', name: { ka: 'სტოა', en: 'Stoa' } },
+                                { id: 'temple-arch', name: { ka: 'ტაძარი', en: 'Temple' } },
+                                { id: 'forum-arch', name: { ka: 'ფორუმი', en: 'Forum' } },
+                                { id: 'frieze', name: { ka: 'ფრიზი', en: 'Frieze' } },
+                                { id: 'monument-arch', name: { ka: 'ძეგლი', en: 'Monument' } },
+                            ]
+                        },
+                        {
+                            id: 'medieval-architecture',
+                            name: { ka: '🏰 შუა საუკუნეების არქიტექტურა (ბიზანტიური, რომანული, გოთიკური)', en: '🏰 Medieval Architecture (Byzantine, Romanesque, Gothic)' },
+                            keywords: [
+                                { id: 'apse', name: { ka: 'აფსიდა', en: 'Apse' } },
+                                { id: 'flying-buttress', name: { ka: 'არკბუტანი', en: 'Flying buttress' } },
+                                { id: 'basilica-medieval', name: { ka: 'ბაზილიკა', en: 'Basilica' } },
+                                { id: 'gothic-style', name: { ka: 'გოთიკური სტილი', en: 'Gothic style' } },
+                                { id: 'hall', name: { ka: 'დარბაზი', en: 'Hall' } },
+                                { id: 'donjon-keep', name: { ka: 'დონჟონი', en: 'Donjon / Keep' } },
+                                { id: 'stained-glass', name: { ka: 'ვიტრაჟი', en: 'Stained glass' } },
+                                { id: 'cathedral', name: { ka: 'კათედრალი', en: 'Cathedral' } },
+                                { id: 'vault', name: { ka: 'კამარა (ნერვიურული, ჯვრული, ცილინდრული)', en: 'Vault (Ribbed, Groin, Barrel)' } },
+                                { id: 'capital-medieval', name: { ka: 'კაპიტელი', en: 'Capital' } },
+                                { id: 'cloister', name: { ka: 'კლუატრი', en: 'Cloister' } },
+                                { id: 'buttress', name: { ka: 'კონტრფორსი', en: 'Buttress' } },
+                                { id: 'crypt', name: { ka: 'კრიპტა', en: 'Crypt' } },
+                                { id: 'minaret', name: { ka: 'მინარეთი', en: 'Minaret' } },
+                                { id: 'monastery-arch', name: { ka: 'მონასტერი', en: 'Monastery' } },
+                                { id: 'nave', name: { ka: 'ნავი', en: 'Nave' } },
+                                { id: 'portal', name: { ka: 'პორტალი', en: 'Portal' } },
+                                { id: 'rose-window', name: { ka: 'როზეტი (ვარდული)', en: 'Rose window' } },
+                                { id: 'romanesque-style', name: { ka: 'რომანული სტილი', en: 'Romanesque style' } },
+                                { id: 'transept', name: { ka: 'ტრანსეპტი', en: 'Transept' } },
+                                { id: 'fresco-arch', name: { ka: 'ფრესკა', en: 'Fresco' } },
+                                { id: 'fortress-castle', name: { ka: 'ციხესიმაგრე', en: 'Fortress / Castle' } },
+                                { id: 'citadel', name: { ka: 'ციტადელი', en: 'Citadel' } },
+                                { id: 'pointed-arch', name: { ka: 'წვეტიანი თაღი', en: 'Pointed arch' } },
+                            ]
+                        },
+                        {
+                            id: 'renaissance-baroque-rococo',
+                            name: { ka: '⚜️ რენესანსი, ბაროკო და როკოკო', en: '⚜️ Renaissance, Baroque, and Rococo' },
+                            keywords: [
+                                { id: 'balustrade', name: { ka: 'ბალუსტრადა', en: 'Balustrade' } },
+                                { id: 'baroque', name: { ka: 'ბაროკო', en: 'Baroque' } },
+                                { id: 'villa-arch', name: { ka: 'ვილა', en: 'Villa' } },
+                                { id: 'capital-renaissance', name: { ka: 'კაპიტელი', en: 'Capital' } },
+                                { id: 'classicism', name: { ka: 'კლასიციზმი', en: 'Classicism' } },
+                                { id: 'mannerism', name: { ka: 'მანიერიზმი', en: 'Mannerism' } },
+                                { id: 'ornament-arch', name: { ka: 'ორნამენტი', en: 'Ornament' } },
+                                { id: 'palazzo', name: { ka: 'პალაცო', en: 'Palazzo' } },
+                                { id: 'pilaster', name: { ka: 'პილასტრი', en: 'Pilaster' } },
+                                { id: 'proportion', name: { ka: 'პროპორცია', en: 'Proportion' } },
+                                { id: 'renaissance-arch', name: { ka: 'რენესანსი (აღორძინება)', en: 'Renaissance' } },
+                                { id: 'rococo', name: { ka: 'როკოკო', en: 'Rococo' } },
+                                { id: 'rotunda', name: { ka: 'როტონდა', en: 'Rotunda' } },
+                                { id: 'symmetry', name: { ka: 'სიმეტრია', en: 'Symmetry' } },
+                                { id: 'facade', name: { ka: 'ფასადი', en: 'Façade' } },
+                                { id: 'pediment', name: { ka: 'ფრონტონი', en: 'Pediment' } },
+                            ]
+                        },
+                        {
+                            id: '18-20-century-architecture',
+                            name: { ka: '🏙️ XVIII-XX საუკუნეების არქიტექტურა', en: '🏙️ 18th-20th Century Architecture' },
+                            keywords: [
+                                { id: 'art-deco', name: { ka: 'არტ-დეკო', en: 'Art Deco' } },
+                                { id: 'art-nouveau', name: { ka: 'არტ-ნუვო', en: 'Art Nouveau' } },
+                                { id: 'bauhaus', name: { ka: 'ბაუჰაუსი', en: 'Bauhaus' } },
+                                { id: 'brutalism', name: { ka: 'ბრუტალიზმი', en: 'Brutalism' } },
+                                { id: 'eclecticism', name: { ka: 'ეკლექტიკა', en: 'Eclecticism' } },
+                                { id: 'classicism-18-20', name: { ka: 'კლასიციზმი', en: 'Classicism' } },
+                                { id: 'constructivism', name: { ka: 'კონსტრუქტივიზმი', en: 'Constructivism' } },
+                                { id: 'minimalism', name: { ka: 'მინიმალიზმი', en: 'Minimalism' } },
+                                { id: 'modernism', name: { ka: 'მოდერნიზმი', en: 'Modernism' } },
+                                { id: 'neoclassicism', name: { ka: 'ნეოკლასიციზმი', en: 'Neoclassicism' } },
+                                { id: 'prairie-school', name: { ka: 'პრერიების სკოლა', en: 'Prairie School' } },
+                                { id: 'international-style', name: { ka: 'საერთაშორისო სტილი', en: 'International Style' } },
+                                { id: 'secession', name: { ka: 'სეცესიონი', en: 'Secession' } },
+                                { id: 'functionalism-arch', name: { ka: 'ფუნქციონალიზმი', en: 'Functionalism' } },
+                                { id: 'futurism', name: { ka: 'ფუტურიზმი', en: 'Futurism' } },
+                                { id: 'form-follows-function', name: { ka: '"ფორმა ფუნქციას მიჰყვება"', en: '"Form follows function"' } },
+                            ]
+                        },
+                        {
+                            id: 'contemporary-architecture',
+                            name: { ka: '🏗️ თანამედროვე არქიტექტურა', en: '🏗️ Contemporary Architecture' },
+                            keywords: [
+                                { id: 'asymmetry', name: { ka: 'ასიმეტრია', en: 'Asymmetry' } },
+                                { id: 'biotech-architecture', name: { ka: 'ბიოტექნოლოგიური არქიტექტურა', en: 'Biotech architecture' } },
+                                { id: 'blob-architecture', name: { ka: 'ბლობის არქიტექტურა', en: 'Blob architecture' } },
+                                { id: 'deconstructivism', name: { ka: 'დეკონსტრუქტივიზმი', en: 'Deconstructivism' } },
+                                { id: 'ecological-design', name: { ka: 'ეკოლოგიური დიზაინი', en: 'Ecological design' } },
+                                { id: 'energy-efficiency-arch', name: { ka: 'ენერგოეფექტურობა', en: 'Energy efficiency' } },
+                                { id: 'climatic-adaptation-arch', name: { ka: 'კლიმატური ადაპტაცია', en: 'Climatic adaptation' } },
+                                { id: 'collage-arch', name: { ka: 'კოლაჟი', en: 'Collage' } },
+                                { id: 'sustainable-architecture', name: { ka: 'მდგრადი ("მწვანე") არქიტექტურა', en: 'Sustainable ("Green") architecture' } },
+                                { id: 'green-building', name: { ka: 'მწვანე შენობა', en: 'Green building' } },
+                                { id: 'narrative-in-space', name: { ka: 'ნარატივი სივრცეში', en: 'Narrative in space' } },
+                                { id: 'parametric-design', name: { ka: 'პარამეტრული დიზაინი', en: 'Parametric design' } },
+                                { id: 'postmodernism-arch', name: { ka: 'პოსტმოდერნიზმი', en: 'Postmodernism' } },
+                                { id: 'fragmentation-arch', name: { ka: 'ფრაგმენტაცია', en: 'Fragmentation' } },
+                                { id: 'high-tech', name: { ka: 'ჰაი-ტექი', en: 'High-tech' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'architecture-theory-practice',
+                    name: { ka: '📐 II. არქიტექტურის თეორია და პრაქტიკა', en: '📐 II. Theory and Practice of Architecture' },
+                    subSections: [
+                        {
+                            id: 'architectural-principles',
+                            name: { ka: '🧩 არქიტექტურული პრინციპები', en: '🧩 Architectural Principles' },
+                            keywords: [
+                                { id: 'asymmetry-principles', name: { ka: 'ასიმეტრია', en: 'Asymmetry' } },
+                                { id: 'balance-principles', name: { ka: 'ბალანსი', en: 'Balance' } },
+                                { id: 'unity', name: { ka: 'ერთიანობა', en: 'Unity' } },
+                                { id: 'ergonomics-principles', name: { ka: 'ერგონომიკა', en: 'Ergonomics' } },
+                                { id: 'composition-principles', name: { ka: 'კომპოზიცია', en: 'Composition' } },
+                                { id: 'contrast-principles', name: { ka: 'კონტრასტი', en: 'Contrast' } },
+                                { id: 'scale-principles', name: { ka: 'მასშტაბი', en: 'Scale' } },
+                                { id: 'proportion-principles', name: { ka: 'პროპორცია', en: 'Proportion' } },
+                                { id: 'rhythm-principles', name: { ka: 'რიტმი', en: 'Rhythm' } },
+                                { id: 'symmetry-principles', name: { ka: 'სიმეტრია', en: 'Symmetry' } },
+                                { id: 'light-principles', name: { ka: 'სინათლე', en: 'Light' } },
+                                { id: 'space-principles', name: { ka: 'სივრცე', en: 'Space' } },
+                                { id: 'structure-principles', name: { ka: 'სტრუქტურა', en: 'Structure' } },
+                                { id: 'texture-principles', name: { ka: 'ტექსტურა', en: 'Texture' } },
+                                { id: 'color-principles', name: { ka: 'ფერი', en: 'Color' } },
+                                { id: 'form-principles', name: { ka: 'ფორმა', en: 'Form' } },
+                                { id: 'function-principles', name: { ka: 'ფუნქცია', en: 'Function' } },
+                                { id: 'harmony-principles', name: { ka: 'ჰარმონია', en: 'Harmony' } },
+                            ]
+                        },
+                        {
+                            id: 'construction-technologies-materials',
+                            name: { ka: '🧱 სამშენებლო ტექნოლოგიები და მასალები', en: '🧱 Construction Technologies and Materials' },
+                            keywords: [
+                                { id: '3d-printing-construction', name: { ka: '3D პრინტინგი', en: '3D Printing' } },
+                                { id: 'brick', name: { ka: 'აგური', en: 'Brick' } },
+                                { id: 'prefabricated-construction', name: { ka: 'ანაკრეფი კონსტრუქცია', en: 'Prefabricated construction' } },
+                                { id: 'concrete', name: { ka: 'ბეტონი', en: 'Concrete' } },
+                                { id: 'thermal-insulation', name: { ka: 'თბოიზოლაცია', en: 'Thermal insulation' } },
+                                { id: 'innovative-materials', name: { ka: 'ინოვაციური მასალები', en: 'Innovative materials' } },
+                                { id: 'frame', name: { ka: 'კარკასი', en: 'Frame' } },
+                                { id: 'composite-materials', name: { ka: 'კომპოზიტური მასალები', en: 'Composite materials' } },
+                                { id: 'glass', name: { ka: 'მინა', en: 'Glass' } },
+                                { id: 'construction', name: { ka: 'მშენებლობა', en: 'Construction' } },
+                                { id: 'structural-stability', name: { ka: 'ნაგებობის მდგრადობა', en: 'Structural stability' } },
+                                { id: 'reinforced-concrete', name: { ka: 'რკინაბეტონი', en: 'Reinforced concrete' } },
+                                { id: 'foundation', name: { ka: 'საძირკველი', en: 'Foundation' } },
+                                { id: 'facade-construction', name: { ka: 'ფასადი', en: 'Façade' } },
+                                { id: 'steel', name: { ka: 'ფოლადი', en: 'Steel' } },
+                                { id: 'stone-construction', name: { ka: 'ქვა', en: 'Stone' } },
+                                { id: 'wood-construction', name: { ka: 'ხე', en: 'Wood' } },
+                            ]
+                        },
+                        {
+                            id: 'spatial-planning',
+                            name: { ka: '🗺️ სივრცითი დაგეგმარება', en: '🗺️ Spatial Planning' },
+                            keywords: [
+                                { id: 'urban-planning', name: { ka: 'ურბანული დაგეგმარება (ურბანიზმი)', en: 'Urban Planning (Urbanism)' } },
+                                { id: 'master-plan', name: { ka: 'გენერალური გეგმა', en: 'Master plan' } },
+                                { id: 'gentrification-planning', name: { ka: 'ჯენტრიფიკაცია', en: 'Gentrification' } },
+                                { id: 'zoning', name: { ka: 'ზონირება', en: 'Zoning' } },
+                                { id: 'infrastructure', name: { ka: 'ინფრასტრუქტურა', en: 'Infrastructure' } },
+                                { id: 'recreational-zone', name: { ka: 'რეკრეაციული ზონა', en: 'Recreational zone' } },
+                                { id: 'public-transport', name: { ka: 'საზოგადოებრივი ტრანსპორტი', en: 'Public transport' } },
+                                { id: 'public-space', name: { ka: 'საჯარო სივრცე', en: 'Public space' } },
+                                { id: 'transport-network', name: { ka: 'სატრანსპორტო ქსელი', en: 'Transport network' } },
+                                { id: 'urbanism', name: { ka: 'ურბანიზმი', en: 'Urbanism' } },
+                                { id: 'urban-ecology-planning', name: { ka: 'ურბანული ეკოლოგია', en: 'Urban ecology' } },
+                                { id: 'urban-planning-term', name: { ka: 'ქალაქგეგმარება', en: 'Urban planning' } },
+                                { id: 'landscape-architecture', name: { ka: 'ლანდშაფტის არქიტექტურა', en: 'Landscape Architecture' } },
+                                { id: 'rock-garden', name: { ka: 'ალპინარიუმი', en: 'Rock garden' } },
+                                { id: 'garden', name: { ka: 'ბაღი', en: 'Garden' } },
+                                { id: 'biodiversity-landscape', name: { ka: 'ბიომრავალფეროვნება', en: 'Biodiversity' } },
+                                { id: 'landscaping', name: { ka: 'გამწვანება', en: 'Landscaping' } },
+                                { id: 'ecological-design-landscape', name: { ka: 'ეკოლოგიური დიზაინი', en: 'Ecological design' } },
+                                { id: 'park', name: { ka: 'პარკი', en: 'Park' } },
+                                { id: 'pergola', name: { ka: 'პერგოლა', en: 'Pergola' } },
+                                { id: 'recreational-area', name: { ka: 'რეკრეაციული ზონა', en: 'Recreational area' } },
+                                { id: 'square', name: { ka: 'სკვერი', en: 'Square' } },
+                                { id: 'topiary', name: { ka: 'ტოპიარი', en: 'Topiary' } },
+                                { id: 'fountain', name: { ka: 'შადრევანი', en: 'Fountain' } },
+                                { id: 'water-features', name: { ka: 'წყლის ელემენტები', en: 'Water features' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'design',
+                    name: { ka: '✒️ III. დიზაინი', en: '✒️ III. Design' },
+                    subSections: [
+                        {
+                            id: 'visual-communication-design',
+                            name: { ka: '🖥️ ვიზუალური კომუნიკაციის დიზაინი', en: '🖥️ Visual Communication Design' },
+                            keywords: [
+                                { id: 'graphic-design', name: { ka: 'გრაფიკული დიზაინი', en: 'Graphic Design' } },
+                                { id: 'brand-book', name: { ka: 'ბრენდბუქი', en: 'Brand book' } },
+                                { id: 'branding-design', name: { ka: 'ბრენდინგი', en: 'Branding' } },
+                                { id: 'brochure', name: { ka: 'ბროშურა', en: 'Brochure' } },
+                                { id: 'visual-identity', name: { ka: 'ვიზუალური იდენტობა', en: 'Visual identity' } },
+                                { id: 'infographics', name: { ka: 'ინფოგრაფიკა', en: 'Infographics' } },
+                                { id: 'corporate-identity', name: { ka: 'კორპორატიული სტილი', en: 'Corporate identity' } },
+                                { id: 'logo', name: { ka: 'ლოგო', en: 'Logo' } },
+                                { id: 'layout', name: { ka: 'მაკეტი', en: 'Layout' } },
+                                { id: 'pictogram', name: { ka: 'პიქტოგრამა', en: 'Pictogram' } },
+                                { id: 'poster-design', name: { ka: 'პლაკატი', en: 'Poster' } },
+                                { id: 'polygraphy', name: { ka: 'პოლიგრაფია', en: 'Polygraphy' } },
+                                { id: 'typography-design', name: { ka: 'ტიპოგრაფია', en: 'Typography' } },
+                                { id: 'color-theory', name: { ka: 'ფერთა თეორია (RGB, CMYK, პანტონი)', en: 'Color theory (RGB, CMYK, Pantone)' } },
+                                { id: 'font', name: { ka: 'შრიფტი', en: 'Font' } },
+                                { id: 'icon', name: { ka: 'ხატულა (icon)', en: 'Icon' } },
+                                { id: 'illustration', name: { ka: 'ილუსტრაცია', en: 'Illustration' } },
+                                { id: 'visual-narrative-illustration', name: { ka: 'ვიზუალური ნარატივი', en: 'Visual narrative' } },
+                                { id: 'comics-illustration', name: { ka: 'კომიქსი', en: 'Comics' } },
+                                { id: 'sketch-illustration', name: { ka: 'სკეჩი', en: 'Sketch' } },
+                                { id: 'digital-illustration', name: { ka: 'ციფრული ილუსტრაცია', en: 'Digital illustration' } },
+                                { id: 'web-app-design', name: { ka: 'ვებ და აპლიკაციების დიზაინი (UI/UX)', en: 'Web and App Design (UI/UX)' } },
+                                { id: 'ui', name: { ka: 'UI (მომხმარებლის ინტერფეისი)', en: 'UI (User Interface)' } },
+                                { id: 'ux', name: { ka: 'UX (მომხმარებლის გამოცდილება)', en: 'UX (User Experience)' } },
+                                { id: 'adaptive-design', name: { ka: 'ადაპტური დიზაინი', en: 'Adaptive design' } },
+                                { id: 'usability', name: { ka: 'გამოყენებადობა', en: 'Usability' } },
+                                { id: 'wireframe', name: { ka: 'ვაირფრეიმი', en: 'Wireframe' } },
+                                { id: 'website', name: { ka: 'ვებსაიტი', en: 'Website' } },
+                                { id: 'interaction-design', name: { ka: 'ინტერაქციის დიზაინი', en: 'Interaction design' } },
+                                { id: 'mobile-application', name: { ka: 'მობილური აპლიკაცია', en: 'Mobile application' } },
+                                { id: 'user-research', name: { ka: 'მომხმარებლის კვლევა', en: 'User research' } },
+                                { id: 'user-navigation', name: { ka: 'მომხმარებლის ნავიგაცია', en: 'User navigation' } },
+                                { id: 'prototype-design', name: { ka: 'პროტოტიპი', en: 'Prototype' } },
+                                { id: 'responsive-design', name: { ka: 'რესპონსიული დიზაინი', en: 'Responsive design' } },
+                            ]
+                        },
+                        {
+                            id: 'product-space-design',
+                            name: { ka: '🛋️ პროდუქტისა და სივრცის დიზაინი', en: '🛋️ Product and Space Design' },
+                            keywords: [
+                                { id: 'industrial-product-design', name: { ka: 'ინდუსტრიული (პროდუქტის) დიზაინი', en: 'Industrial (Product) Design' } },
+                                { id: '3d-modeling', name: { ka: '3D მოდელირება', en: '3D modeling' } },
+                                { id: 'ergonomics-design', name: { ka: 'ერგონომიკა', en: 'Ergonomics' } },
+                                { id: 'material-design', name: { ka: 'მასალა', en: 'Material' } },
+                                { id: 'product-design', name: { ka: 'პროდუქტის დიზაინი', en: 'Product design' } },
+                                { id: 'prototyping-design', name: { ka: 'პროტოტიპირება', en: 'Prototyping' } },
+                                { id: 'consumer-product', name: { ka: 'სამომხმარებლო პროდუქტი', en: 'Consumer product' } },
+                                { id: 'functional-design', name: { ka: 'ფუნქციონალური დიზაინი', en: 'Functional design' } },
+                                { id: 'manufacturing', name: { ka: 'წარმოება', en: 'Manufacturing' } },
+                                { id: 'interior-design', name: { ka: 'ინტერიერის დიზაინი', en: 'Interior Design' } },
+                                { id: 'furniture', name: { ka: 'ავეჯი', en: 'Furniture' } },
+                                { id: 'atmosphere-design', name: { ka: 'ატმოსფერო', en: 'Atmosphere' } },
+                                { id: 'lighting-design', name: { ka: 'განათება', en: 'Lighting' } },
+                                { id: 'decor', name: { ka: 'დეკორი', en: 'Decor' } },
+                                { id: 'ergonomics-interior', name: { ka: 'ერგონომიკა', en: 'Ergonomics' } },
+                                { id: 'zoning-interior', name: { ka: 'ზონირება', en: 'Zoning' } },
+                                { id: 'space-planning', name: { ka: 'სივრცის დაგეგმარება', en: 'Space planning' } },
+                                { id: 'textile-interior', name: { ka: 'ტექსტილი', en: 'Textile' } },
+                                { id: 'texture-interior', name: { ka: 'ტექსტურა', en: 'Texture' } },
+                                { id: 'color-interior', name: { ka: 'ფერი', en: 'Color' } },
+                                { id: 'furniture-design', name: { ka: 'ავეჯის დიზაინი', en: 'Furniture Design' } },
+                                { id: 'vintage', name: { ka: 'ვინტაჟი', en: 'Vintage' } },
+                                { id: 'comfort', name: { ka: 'კომფორტი', en: 'Comfort' } },
+                                { id: 'material-furniture', name: { ka: 'მასალა', en: 'Material' } },
+                                { id: 'modular-furniture', name: { ka: 'მოდულური ავეჯი', en: 'Modular furniture' } },
+                                { id: 'restoration-furniture', name: { ka: 'რესტავრაცია', en: 'Restoration' } },
+                                { id: 'functional-design-furniture', name: { ka: 'ფუნქციონალური დიზაინი', en: 'Functional design' } },
+                            ]
+                        },
+                        {
+                            id: 'fashion-design',
+                            name: { ka: '👗 მოდის დიზაინი', en: '👗 Fashion Design' },
+                            keywords: [
+                                { id: 'clothing-design', name: { ka: 'ტანსაცმლის დიზაინი', en: 'Clothing Design' } },
+                                { id: 'sketch-fashion', name: { ka: 'ესკიზი', en: 'Sketch' } },
+                                { id: 'pattern', name: { ka: 'თარგი', en: 'Pattern' } },
+                                { id: 'collection', name: { ka: 'კოლექცია', en: 'Collection' } },
+                                { id: 'haute-couture', name: { ka: 'მაღალი მოდა', en: 'Haute Couture' } },
+                                { id: 'fabric', name: { ka: 'მატერია', en: 'Fabric' } },
+                                { id: 'ready-to-wear', name: { ka: 'მზა ტანსაცმელი', en: 'Prêt-à-porter (Ready-to-wear)' } },
+                                { id: 'fashion', name: { ka: 'მოდა', en: 'Fashion' } },
+                                { id: 'silhouette', name: { ka: 'სილუეტი', en: 'Silhouette' } },
+                                { id: 'trend', name: { ka: 'ტრენდი', en: 'Trend' } },
+                                { id: 'color-fashion', name: { ka: 'ფერი', en: 'Color' } },
+                                { id: 'accessory-design', name: { ka: 'აქსესუარების დიზაინი', en: 'Accessory Design' } },
+                                { id: 'accessory', name: { ka: 'აქსესუარი', en: 'Accessory' } },
+                                { id: 'detail', name: { ka: 'დეტალი', en: 'Detail' } },
+                                { id: 'jewelry', name: { ka: 'სამკაული', en: 'Jewelry' } },
+                                { id: 'watch', name: { ka: 'საათი', en: 'Watch' } },
+                                { id: 'shoes', name: { ka: 'ფეხსაცმელი', en: 'Shoes' } },
+                                { id: 'hat', name: { ka: 'ქუდი', en: 'Hat' } },
+                                { id: 'bag', name: { ka: 'ჩანთა', en: 'Bag' } },
+                                { id: 'handmade', name: { ka: 'ხელნაკეთი', en: 'Handmade' } },
+                                { id: 'textile-design', name: { ka: 'ტექსტილის დიზაინი', en: 'Textile Design' } },
+                                { id: 'print-textile', name: { ka: 'ბეჭდვა (პრინტი)', en: 'Print' } },
+                                { id: 'woven-pattern', name: { ka: 'ნაქსოვი ნიმუში', en: 'Woven pattern' } },
+                                { id: 'embroidery', name: { ka: 'ნაქარგი', en: 'Embroidery' } },
+                                { id: 'pattern-textile', name: { ka: 'პატერნი', en: 'Pattern' } },
+                                { id: 'textile', name: { ka: 'ტექსტილი', en: 'Textile' } },
+                                { id: 'texture-textile', name: { ka: 'ფაქტურა', en: 'Texture' } },
+                                { id: 'weaving', name: { ka: 'ქსოვა', en: 'Weaving' } },
+                                { id: 'fabric-textile', name: { ka: 'ქსოვილი', en: 'Fabric' } },
+                            ]
+                        },
+                        {
+                            id: 'other-design-fields',
+                            name: { ka: '🌐 დიზაინის სხვა მიმართულებები', en: '🌐 Other Design Fields' },
+                            keywords: [
+                                { id: 'transportation-design', name: { ka: 'სატრანსპორტო დიზაინი', en: 'Transportation Design' } },
+                                { id: 'aerodynamics', name: { ka: 'აეროდინამიკა', en: 'Aerodynamics' } },
+                                { id: 'exterior', name: { ka: 'ექსტერიერი', en: 'Exterior' } },
+                                { id: 'interior', name: { ka: 'ინტერიერი', en: 'Interior' } },
+                                { id: 'concept-car', name: { ka: 'კონცეპტ-კარი', en: 'Concept car' } },
+                                { id: 'automotive-design', name: { ka: 'საავტომობილო დიზაინი', en: 'Automotive design' } },
+                                { id: 'sound-design', name: { ka: 'ხმის დიზაინი', en: 'Sound Design' } },
+                                { id: 'acoustics-design', name: { ka: 'აკუსტიკა', en: 'Acoustics' } },
+                                { id: 'audio-branding', name: { ka: 'აუდიო ბრენდინგი', en: 'Audio branding' } },
+                                { id: 'soundtrack-design', name: { ka: 'საუნდტრეკი', en: 'Soundtrack' } },
+                                { id: 'sound-effects', name: { ka: 'ხმოვანი ეფექტები', en: 'Sound effects' } },
+                                { id: 'sound-narrative', name: { ka: 'ხმოვანი ნარატივი', en: 'Sound narrative' } },
+                                { id: 'game-design', name: { ka: 'თამაშების დიზაინი (Game Design)', en: 'Game Design' } },
+                                { id: 'gameplay', name: { ka: 'გეიმპლეი', en: 'Gameplay' } },
+                                { id: 'level-design', name: { ka: 'დონის დიზაინი', en: 'Level design' } },
+                                { id: 'game-mechanics', name: { ka: 'თამაშის მექანიკა', en: 'Game mechanics' } },
+                                { id: 'interactive-story', name: { ka: 'ინტერაქტიული სიუჟეტი', en: 'Interactive story' } },
+                                { id: 'character-design', name: { ka: 'პერსონაჟის დიზაინი', en: 'Character design' } },
+                                { id: 'vr-game', name: { ka: 'ვირტუალური რეალობა (VR)', en: 'Virtual Reality (VR)' } },
+                                { id: 'world-building', name: { ka: 'მსოფლიოს აგება', en: 'World-building' } },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'visual-arts',
+            name: { ka: '🖼️ ვიზუალური ხელოვნება', en: '🖼️ Visual Arts' },
+            sections: [
+                {
+                    id: '2d-art',
+                    name: { ka: '🎨 I. ორგანზომილებიანი ხელოვნება (2D)', en: '🎨 I. Two-Dimensional Art (2D)' },
+                    subSections: [
+                        {
+                            id: 'painting',
+                            name: { ka: '🖌️ მხატვრობა', en: '🖌️ Painting' },
+                            keywords: [
+                                { id: 'watercolor', name: { ka: 'აკვარელი', en: 'Watercolor' } },
+                                { id: 'acrylic', name: { ka: 'აკრილი', en: 'Acrylic' } },
+                                { id: 'gouache', name: { ka: 'გუაში', en: 'Gouache' } },
+                                { id: 'oil-paint', name: { ka: 'ზეთი', en: 'Oil paint' } },
+                                { id: 'canvas', name: { ka: 'ტილო', en: 'Canvas' } },
+                                { id: 'pastel', name: { ka: 'პასტელი', en: 'Pastel' } },
+                                { id: 'pigment', name: { ka: 'პიგმენტი', en: 'Pigment' } },
+                                { id: 'tempera', name: { ka: 'ტემპერა', en: 'Tempera' } },
+                                { id: 'fresco-painting', name: { ka: 'ფრესკა', en: 'Fresco' } },
+                                { id: 'brush', name: { ka: 'ფუნჯი', en: 'Brush' } },
+                                { id: 'chiaroscuro', name: { ka: 'კიაროსკურო', en: 'Chiaroscuro' } },
+                                { id: 'sfumato', name: { ka: 'სფუმატო', en: 'Sfumato' } },
+                                { id: 'impasto', name: { ka: 'იმპასტო', en: 'Impasto' } },
+                                { id: 'grisaille', name: { ka: 'გრიზაილი', en: 'Grisaille' } },
+                                { id: 'collage-painting', name: { ka: 'კოლაჟი', en: 'Collage' } },
+                                { id: 'palette', name: { ka: 'პალიტრა', en: 'Palette' } },
+                                { id: 'easel', name: { ka: 'მოლბერტი', en: 'Easel' } },
+                                { id: 'palette-knife', name: { ka: 'მატიჰოლი', en: 'Palette knife' } },
+                                { id: 'abstract-art', name: { ka: 'აბსტრაქციონიზმი', en: 'Abstract art' } },
+                                { id: 'self-portrait', name: { ka: 'ავტოპორტრეტი', en: 'Self-portrait' } },
+                                { id: 'baroque-painting', name: { ka: 'ბაროკო', en: 'Baroque' } },
+                                { id: 'battle-painting', name: { ka: 'ბატალური ჟანრი', en: 'Battle painting' } },
+                                { id: 'expressionism', name: { ka: 'ექსპრესიონიზმი', en: 'Expressionism' } },
+                                { id: 'impressionism', name: { ka: 'იმპრესიონიზმი', en: 'Impressionism' } },
+                                { id: 'history-painting', name: { ka: 'ისტორიული ჟანრი', en: 'History painting' } },
+                                { id: 'classicism-painting', name: { ka: 'კლასიციზმი', en: 'Classicism' } },
+                                { id: 'cubism', name: { ka: 'კუბიზმი', en: 'Cubism' } },
+                                { id: 'modernism-painting', name: { ka: 'მოდერნიზმი', en: 'Modernism' } },
+                                { id: 'still-life', name: { ka: 'ნატურმორტი', en: 'Still life' } },
+                                { id: 'landscape-painting', name: { ka: 'პეიზაჟი', en: 'Landscape' } },
+                                { id: 'pop-art', name: { ka: 'პოპ-არტი', en: 'Pop art' } },
+                                { id: 'portrait', name: { ka: 'პორტრეტი', en: 'Portrait' } },
+                                { id: 'post-impressionism', name: { ka: 'პოსტიმპრესიონიზმი', en: 'Post-Impressionism' } },
+                                { id: 'realism', name: { ka: 'რეალიზმი', en: 'Realism' } },
+                                { id: 'religious-painting', name: { ka: 'რელიგიური მხატვრობა', en: 'Religious painting' } },
+                                { id: 'renaissance-painting', name: { ka: 'რენესანსი', en: 'Renaissance' } },
+                                { id: 'romanticism', name: { ka: 'რომანტიზმი', en: 'Romanticism' } },
+                                { id: 'surrealism', name: { ka: 'სიურრეალიზმი', en: 'Surrealism' } },
+                                { id: 'fauvism', name: { ka: 'ფოვიზმი', en: 'Fauvism' } },
+                            ]
+                        },
+                        {
+                            id: 'graphics',
+                            name: { ka: '✏️ გრაფიკა', en: '✏️ Graphics' },
+                            keywords: [
+                                { id: 'drawing', name: { ka: 'ხატვა', en: 'Drawing' } },
+                                { id: 'sketch', name: { ka: 'ესკიზი', en: 'Sketch' } },
+                                { id: 'composition-graphics', name: { ka: 'კომპოზიცია', en: 'Composition' } },
+                                { id: 'ink', name: { ka: 'მელანი', en: 'Ink' } },
+                                { id: 'monochrome', name: { ka: 'მონოქრომული', en: 'Monochrome' } },
+                                { id: 'drawing-term', name: { ka: 'ნახატი', en: 'Drawing' } },
+                                { id: 'charcoal', name: { ka: 'ნახშირი', en: 'Charcoal' } },
+                                { id: 'sanguine', name: { ka: 'სანგინა', en: 'Sanguine' } },
+                                { id: 'texture-graphics', name: { ka: 'ტექსტურა', en: 'Texture' } },
+                                { id: 'indian-ink', name: { ka: 'ტუში', en: 'Indian ink' } },
+                                { id: 'pencil', name: { ka: 'ფანქარი', en: 'Pencil' } },
+                                { id: 'draft-sketch', name: { ka: 'ჩანახატი', en: 'Draft/Sketch' } },
+                                { id: 'light-shadow', name: { ka: 'შუქ-ჩრდილი', en: 'Light and shadow' } },
+                                { id: 'line-graphics', name: { ka: 'ხაზი', en: 'Line' } },
+                                { id: 'printmaking', name: { ka: 'ბეჭდური გრაფიკა (დაზგური)', en: 'Printmaking' } },
+                                { id: 'aquatint', name: { ka: 'აკვატინტა', en: 'Aquatint' } },
+                                { id: 'print', name: { ka: 'ანაბეჭდი', en: 'Print' } },
+                                { id: 'engraving', name: { ka: 'გრავიურა', en: 'Engraving' } },
+                                { id: 'easel-print', name: { ka: 'ესტამპი', en: 'Easel print' } },
+                                { id: 'lithography', name: { ka: 'ლითოგრაფია', en: 'Lithography' } },
+                                { id: 'mezzotint', name: { ka: 'მეცო-ტინტო', en: 'Mezzotint' } },
+                                { id: 'etching', name: { ka: 'ოფორტი', en: 'Etching' } },
+                                { id: 'poster', name: { ka: 'პლაკატი', en: 'Poster' } },
+                                { id: 'serigraphy', name: { ka: 'სერიგრაფია', en: 'Serigraphy' } },
+                                { id: 'xylography', name: { ka: 'ქსილოგრაფია (ხის გრავიურა)', en: 'Xylography (Woodcut)' } },
+                            ]
+                        },
+                        {
+                            id: 'photography',
+                            name: { ka: '📸 ფოტოგრაფია', en: '📸 Photography' },
+                            keywords: [
+                                { id: 'fine-art-photography', name: { ka: 'მხატვრული ფოტოგრაფია', en: 'Fine-Art Photography' } },
+                                { id: 'shutter-speed', name: { ka: 'დაყოვნება', en: 'Shutter speed' } },
+                                { id: 'aperture', name: { ka: 'დიაფრაგმა', en: 'Aperture' } },
+                                { id: 'exposure', name: { ka: 'ექსპოზიცია', en: 'Exposure' } },
+                                { id: 'iso', name: { ka: 'ISO', en: 'ISO' } },
+                                { id: 'white-balance', name: { ka: 'თეთრის ბალანსი', en: 'White balance' } },
+                                { id: 'framing', name: { ka: 'კადრირება', en: 'Framing' } },
+                                { id: 'angle-of-view', name: { ka: 'კადრის კუთხე', en: 'Angle of view' } },
+                                { id: 'composition-photo', name: { ka: 'კომპოზიცია', en: 'Composition' } },
+                                { id: 'dof', name: { ka: 'სიღრმის სიმკვეთრე (DOF)', en: 'Depth of Field (DOF)' } },
+                                { id: 'focus', name: { ka: 'ფოკუსი', en: 'Focus' } },
+                                { id: 'color-photo', name: { ka: 'ფერი', en: 'Color' } },
+                                { id: 'bw-photography', name: { ka: 'შავ-თეთრი ფოტოგრაფია', en: 'Black-and-white photography' } },
+                                { id: 'lighting-photo', name: { ka: 'განათება', en: 'Lighting' } },
+                                { id: 'documentary-photography', name: { ka: 'დოკუმენტური ფოტოგრაფია', en: 'Documentary Photography' } },
+                                { id: 'archival-photo', name: { ka: 'არქივული ფოტო', en: 'Archival photo' } },
+                                { id: 'documentary-photo', name: { ka: 'დოკუმენტური ფოტო', en: 'Documentary photo' } },
+                                { id: 'portrait-photography', name: { ka: 'პორტრეტული ფოტოგრაფია', en: 'Portrait photography' } },
+                                { id: 'reportage', name: { ka: 'რეპორტაჟი', en: 'Reportage' } },
+                                { id: 'social-photography', name: { ka: 'სოციალური ფოტო', en: 'Social photography' } },
+                                { id: 'photo-essay', name: { ka: 'ფოტოესე', en: 'Photo essay' } },
+                                { id: 'photojournalism', name: { ka: 'ფოტოჟურნალისტიკა', en: 'Photojournalism' } },
+                                { id: 'street-photography', name: { ka: 'ქუჩის ფოტოგრაფია', en: 'Street photography' } },
+                            ]
+                        },
+                        {
+                            id: 'calligraphy',
+                            name: { ka: '🖋️ კალიგრაფია', en: '🖋️ Calligraphy' },
+                            keywords: [
+                                { id: 'letter', name: { ka: 'ასო', en: 'Letter' } },
+                                { id: 'design-calligraphy', name: { ka: 'დიზაინი', en: 'Design' } },
+                                { id: 'calligraphy-term', name: { ka: 'კალიგრაფია', en: 'Calligraphy' } },
+                                { id: 'monogram', name: { ka: 'მონოგრამა', en: 'Monogram' } },
+                                { id: 'typography', name: { ka: 'ტიპოგრაფია', en: 'Typography' } },
+                                { id: 'script-style', name: { ka: 'ხელნაწერის სტილი', en: 'Script style' } },
+                                { id: 'manuscript-calligraphy', name: { ka: 'ხელნაწერი', en: 'Manuscript' } },
+                                { id: 'font-calligraphy', name: { ka: 'შრიფტი', en: 'Font' } },
+                                { id: 'minuscule', name: { ka: 'მინუსკული', en: 'Minuscule' } },
+                                { id: 'majuscule', name: { ka: 'მაიუსკული', en: 'Majuscule' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: '3d-art',
+                    name: { ka: '🗿 II. სამგანზომილებიანი ხელოვნება (3D)', en: '🗿 II. Three-Dimensional Art (3D)' },
+                    subSections: [
+                        {
+                            id: 'sculpture',
+                            name: { ka: '🗽 ქანდაკება', en: '🗽 Sculpture' },
+                            keywords: [
+                                { id: 'bas-relief', name: { ka: 'ბარელიეფი', en: 'Bas-relief' } },
+                                { id: 'bust', name: { ka: 'ბიუსტი', en: 'Bust' } },
+                                { id: 'bronze', name: { ka: 'ბრინჯაო', en: 'Bronze' } },
+                                { id: 'plaster', name: { ka: 'თაბაშირი', en: 'Plaster' } },
+                                { id: 'clay-sculpture', name: { ka: 'თიხა', en: 'Clay' } },
+                                { id: 'kinetic-sculpture', name: { ka: 'კინეტიკური ქანდაკება (მობილი)', en: 'Kinetic sculpture (Mobile)' } },
+                                { id: 'metal-sculpture', name: { ka: 'ლითონი', en: 'Metal' } },
+                                { id: 'marble-sculpture', name: { ka: 'მარმარილო', en: 'Marble' } },
+                                { id: 'monument', name: { ka: 'მონუმენტი', en: 'Monument' } },
+                                { id: 'patina', name: { ka: 'პატინა', en: 'Patina' } },
+                                { id: 'relief-sculpture', name: { ka: 'რელიეფი', en: 'Relief' } },
+                                { id: 'sculptural-texture', name: { ka: 'სკულპტურული ტექსტურა', en: 'Sculptural texture' } },
+                                { id: 'statue', name: { ka: 'სტატუა', en: 'Statue' } },
+                                { id: 'sculpture-term', name: { ka: 'ქანდაკება', en: 'Sculpture' } },
+                                { id: 'stone-sculpture', name: { ka: 'ქვა', en: 'Stone' } },
+                                { id: 'wood-sculpture', name: { ka: 'ხე', en: 'Wood' } },
+                                { id: 'high-relief', name: { ka: 'ჰორელიეფი', en: 'High-relief' } },
+                            ]
+                        },
+                        {
+                            id: 'installation-assemblage',
+                            name: { ka: '📦 ინსტალაცია და ასამბლაჟი', en: '📦 Installation and Assemblage' },
+                            keywords: [
+                                { id: 'assemblage', name: { ka: 'ასამბლაჟი', en: 'Assemblage' } },
+                                { id: 'installation', name: { ka: 'ინსტალაცია', en: 'Installation' } },
+                                { id: 'collaborative-installation', name: { ka: 'კოლაბორაციული ინსტალაცია', en: 'Collaborative installation' } },
+                                { id: 'conceptual-art', name: { ka: 'კონცეპტუალური ხელოვნება', en: 'Conceptual art' } },
+                                { id: 'ready-made', name: { ka: 'რედი-მეიდი', en: 'Ready-made' } },
+                                { id: 'site-specific-art', name: { ka: 'საიტ-სპეციფიკური ხელოვნება', en: 'Site-specific art' } },
+                                { id: 'spatial-object', name: { ka: 'სივრცითი ობიექტი', en: 'Spatial object' } },
+                            ]
+                        },
+                        {
+                            id: 'land-art',
+                            name: { ka: '🏞️ ლენდ-არტი (ხელოვნება ლანდშაფტში)', en: '🏞️ Land Art' },
+                            keywords: [
+                                { id: 'integration-with-nature', name: { ka: 'ბუნების ინტეგრაცია', en: 'Integration with nature' } },
+                                { id: 'natural-materials', name: { ka: 'ბუნებრივი მასალები', en: 'Natural materials' } },
+                                { id: 'temporary-installation', name: { ka: 'დროებითი ინსტალაცია', en: 'Temporary installation' } },
+                                { id: 'ecological-art', name: { ka: 'ეკოლოგიური ხელოვნება', en: 'Ecological art' } },
+                                { id: 'land-art-term', name: { ka: 'ლენდ-არტი', en: 'Land art' } },
+                                { id: 'earth-art', name: { ka: 'მიწის ხელოვნება', en: 'Earth art' } },
+                            ]
+                        },
+                        {
+                            id: 'street-art',
+                            name: { ka: '🏙️ სთრით არტი (ქუჩის ხელოვნება)', en: '🏙️ Street Art' },
+                            keywords: [
+                                { id: 'graffiti', name: { ka: 'გრაფიტი', en: 'Graffiti' } },
+                                { id: 'yarn-bombing', name: { ka: 'იარნ-ბომბინგი', en: 'Yarn bombing' } },
+                                { id: 'mural', name: { ka: 'მურალი (კედლის მხატვრობა)', en: 'Mural' } },
+                                { id: 'public-space-art', name: { ka: 'საზოგადოებრივი სივრცე', en: 'Public space' } },
+                                { id: 'sticker-art', name: { ka: 'სტიკერი', en: 'Sticker' } },
+                                { id: 'street-art-term', name: { ka: 'სთრით არტი', en: 'Street art' } },
+                                { id: 'stencil', name: { ka: 'ტრაფარეტი', en: 'Stencil' } },
+                                { id: 'urban-art', name: { ka: 'ურბანული ხელოვნება', en: 'Urban art' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'digital-media-art',
+                    name: { ka: '💻 III. ციფრული და მედია ხელოვნება', en: '💻 III. Digital and Media Art' },
+                    subSections: [
+                        {
+                            id: 'digital-painting-illustration',
+                            name: { ka: '🎨 ციფრული მხატვრობა და ილუსტრაცია', en: '🎨 Digital Painting and Illustration' },
+                            keywords: [
+                                { id: 'nft-art', name: { ka: 'NFT ხელოვნება', en: 'NFT art' } },
+                                { id: 'vector-raster-graphics', name: { ka: 'ვექტორული/რასტრული გრაფიკა', en: 'Vector/Raster graphics' } },
+                                { id: 'graphics-tablet', name: { ka: 'გრაფიკული პლანშეტი', en: 'Graphics tablet' } },
+                                { id: 'concept-art', name: { ka: 'კონცეპტ-არტი', en: 'Concept art' } },
+                                { id: 'pixel-art', name: { ka: 'პიქსელ-არტი', en: 'Pixel art' } },
+                                { id: 'digital-illustration-art', name: { ka: 'ციფრული ილუსტრაცია', en: 'Digital illustration' } },
+                                { id: 'digital-painting', name: { ka: 'ციფრული მხატვრობა', en: 'Digital painting' } },
+                                { id: 'digital-sculpting', name: { ka: 'ციფრული სკულპტინგი', en: 'Digital sculpting' } },
+                            ]
+                        },
+                        {
+                            id: 'animation',
+                            name: { ka: '🎬 ანიმაცია', en: '🎬 Animation' },
+                            keywords: [
+                                { id: '2d-3d-animation', name: { ka: '2D/3D ანიმაცია', en: '2D/3D animation' } },
+                                { id: 'animated-film', name: { ka: 'ანიმაციური ფილმი', en: 'Animated film' } },
+                                { id: 'stop-motion-animation', name: { ka: 'კადრ-კადრული (Stop Motion) ანიმაცია', en: 'Stop motion animation' } },
+                                { id: 'motion-graphics', name: { ka: 'მოძრაობის გრაფიკა', en: 'Motion Graphics' } },
+                                { id: 'principles-of-animation', name: { ka: 'მოძრაობის პრინციპები', en: 'Principles of animation' } },
+                                { id: 'cartoon', name: { ka: 'მულტფილმი', en: 'Cartoon' } },
+                                { id: 'character-design-animation', name: { ka: 'პერსონაჟის დიზაინი', en: 'Character design' } },
+                            ]
+                        },
+                        {
+                            id: 'video-art',
+                            name: { ka: '📽️ ვიდეო არტი', en: '📽️ Video Art' },
+                            keywords: [
+                                { id: 'video-art-term', name: { ka: 'ვიდეო არტი', en: 'Video art' } },
+                                { id: 'video-installation', name: { ka: 'ვიდეო ინსტალაცია', en: 'Video installation' } },
+                                { id: 'visual-effects-art', name: { ka: 'ვიზუალური ეფექტები', en: 'Visual effects' } },
+                                { id: 'conceptual-video', name: { ka: 'კონცეპტუალური ვიდეო', en: 'Conceptual video' } },
+                                { id: 'short-film', name: { ka: 'მოკლემეტრაჟიანი ფილმი', en: 'Short film' } },
+                                { id: 'performance-for-video', name: { ka: 'პერფორმანსი ვიდეოსთვის', en: 'Performance for video' } },
+                            ]
+                        },
+                        {
+                            id: 'comics-graphic-novels',
+                            name: { ka: '📖 კომიქსები და გრაფიკული რომანები', en: '📖 Comics and Graphic Novels' },
+                            keywords: [
+                                { id: 'visual-narrative-comics', name: { ka: 'ვიზუალური ნარატივი', en: 'Visual narrative' } },
+                                { id: 'graphic-novel', name: { ka: 'გრაფიკული რომანი', en: 'Graphic novel' } },
+                                { id: 'panel', name: { ka: 'კადრი', en: 'Panel' } },
+                                { id: 'comic-book', name: { ka: 'კომიქსი', en: 'Comic book' } },
+                                { id: 'manga', name: { ka: 'მანგა', en: 'Manga' } },
+                                { id: 'character-comics', name: { ka: 'პერსონაჟი', en: 'Character' } },
+                                { id: 'plot-comics', name: { ka: 'სიუჟეტი', en: 'Plot' } },
+                                { id: 'style-comics', name: { ka: 'სტილი', en: 'Style' } },
+                            ]
+                        },
+                        {
+                            id: 'interactive-art',
+                            name: { ka: '🕹️ ინტერაქტიული ხელოვნება', en: '🕹️ Interactive Art' },
+                            keywords: [
+                                { id: 'vr-ar-art', name: { ka: 'VR/AR არტი', en: 'VR/AR art' } },
+                                { id: 'generative-art', name: { ka: 'გენერაციული ხელოვნება', en: 'Generative art' } },
+                                { id: 'augmented-reality', name: { ka: 'დამატებითი რეალობა (AR)', en: 'Augmented Reality (AR)' } },
+                                { id: 'virtual-reality', name: { ka: 'ვირტუალური რეალობა (VR)', en: 'Virtual Reality (VR)' } },
+                                { id: 'interactive-art-term', name: { ka: 'ინტერაქტიული ხელოვნება', en: 'Interactive art' } },
+                                { id: 'user-interaction', name: { ka: 'მომხმარებლის ინტერაქცია', en: 'User interaction' } },
+                                { id: 'digital-installation', name: { ka: 'ციფრული ინსტალაცია', en: 'Digital installation' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'applied-arts-crafts',
+                    name: { ka: '🏺 IV. გამოყენებითი ხელოვნება და ხელოსნობა', en: '🏺 IV. Applied Arts and Crafts' },
+                    subSections: [
+                        {
+                            id: 'ceramics',
+                            name: { ka: '🍶 კერამიკა', en: '🍶 Ceramics' },
+                            keywords: [
+                                { id: 'firing', name: { ka: 'გამოწვა', en: 'Firing' } },
+                                { id: 'clay-ceramics', name: { ka: 'თიხა', en: 'Clay' } },
+                                { id: 'ceramics-term', name: { ka: 'კერამიკა', en: 'Ceramics' } },
+                                { id: 'pottery', name: { ka: 'მეთუნეობა', en: 'Pottery' } },
+                                { id: 'glaze', name: { ka: 'მინანქარი', en: 'Glaze' } },
+                                { id: 'potters-wheel', name: { ka: 'სამეთუნეო ჩარხი', en: 'Potter\'s wheel' } },
+                                { id: 'terracotta', name: { ka: 'ტერაკოტა', en: 'Terracotta' } },
+                                { id: 'porcelain', name: { ka: 'ფაიფური', en: 'Porcelain' } },
+                                { id: 'traditional-technique', name: { ka: 'ტრადიციული ტექნიკა', en: 'Traditional technique' } },
+                                { id: 'handmade-ceramics', name: { ka: 'ხელნაკეთი', en: 'Handmade' } },
+                                { id: 'pottery-vessels', name: { ka: 'ჭურჭელი', en: 'Pottery/Vessels' } },
+                            ]
+                        },
+                        {
+                            id: 'textile-arts',
+                            name: { ka: '🧵 ტექსტილის ხელოვნება', en: '🧵 Textile Arts' },
+                            keywords: [
+                                { id: 'batik', name: { ka: 'ბატიკა', en: 'Batik' } },
+                                { id: 'tapestry', name: { ka: 'გობელენი', en: 'Tapestry' } },
+                                { id: 'macrame', name: { ka: 'მაკრამე', en: 'Macramé' } },
+                                { id: 'pattern-textile-arts', name: { ka: 'ნიმუში', en: 'Pattern' } },
+                                { id: 'textural-design', name: { ka: 'ტექსტურული დიზაინი', en: 'Textural design' } },
+                                { id: 'rug', name: { ka: 'ფარდაგი', en: 'Rug' } },
+                                { id: 'embroidery-arts', name: { ka: 'ქარგვა', en: 'Embroidery' } },
+                                { id: 'weaving-arts', name: { ka: 'ქსოვა', en: 'Weaving' } },
+                                { id: 'carpet', name: { ka: 'ხალიჩა', en: 'Carpet' } },
+                                { id: 'felt', name: { ka: 'თექა', en: 'Felt' } },
+                            ]
+                        },
+                        {
+                            id: 'glass-art',
+                            name: { ka: '💎 მინის ხელოვნება', en: '💎 Glass Art' },
+                            keywords: [
+                                { id: 'stained-glass-art', name: { ka: 'ვიტრაჟი', en: 'Stained glass' } },
+                                { id: 'glassblowing', name: { ka: 'მინის ბერვა', en: 'Glassblowing' } },
+                                { id: 'glass-engraving', name: { ka: 'მინის გრავირება', en: 'Glass engraving' } },
+                                { id: 'art-glass', name: { ka: 'მხატვრული მინა', en: 'Art glass' } },
+                                { id: 'fusing', name: { ka: 'ფიუზინგი', en: 'Fusing' } },
+                                { id: 'handmade-glass', name: { ka: 'ხელნაკეთი მინა', en: 'Handmade glass' } },
+                            ]
+                        },
+                        {
+                            id: 'jewelry',
+                            name: { ka: '💍 საიუველირო ხელოვნება', en: '💍 Jewelry' },
+                            keywords: [
+                                { id: 'glyptics', name: { ka: 'გლიპტიკა', en: 'Glyptics' } },
+                                { id: 'silversmithing', name: { ka: 'ვერცხლის მჭედლობა', en: 'Silversmithing' } },
+                                { id: 'inlay', name: { ka: 'ინკრუსტაცია', en: 'Inlay' } },
+                                { id: 'cloisonne-enamel', name: { ka: 'ტიხრული მინანქარი', en: 'Cloisonné enamel' } },
+                                { id: 'goldsmithing', name: { ka: 'ოქრომჭედლობა', en: 'Goldsmithing' } },
+                                { id: 'filigree', name: { ka: 'ფილიგრანი', en: 'Filigree' } },
+                                { id: 'gemstone-jewelry', name: { ka: 'ძვირფასი ქვა', en: 'Gemstone' } },
+                                { id: 'precious-metal', name: { ka: 'ძვირფასი ლითონი', en: 'Precious metal' } },
+                            ]
+                        },
+                        {
+                            id: 'mosaic-art',
+                            name: { ka: '🖼️ მოზაიკა', en: '🖼️ Mosaic' },
+                            keywords: [
+                                { id: 'decorative-mosaic', name: { ka: 'დეკორატიული მოზაიკა', en: 'Decorative mosaic' } },
+                                { id: 'mosaic-term', name: { ka: 'მოზაიკა', en: 'Mosaic' } },
+                                { id: 'roman-florentine-byzantine-mosaic', name: { ka: 'რომაული/ფლორენციული/ბიზანტიური მოზაიკა', en: 'Roman/Florentine/Byzantine mosaic' } },
+                                { id: 'smalt', name: { ka: 'სმალტა', en: 'Smalt' } },
+                                { id: 'tessera', name: { ka: 'ტესერა', en: 'Tessera' } },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'literature',
+            name: { ka: '✍️ ლიტერატურა', en: '✍️ Literature' },
+            sections: [
+                {
+                    id: 'literary-forms-genres',
+                    name: { ka: '📚 I. ლიტერატურული ფორმები და ჟანრები', en: '📚 I. Literary Forms and Genres' },
+                    subSections: [
+                        {
+                            id: 'prose',
+                            name: { ka: '📖 პროზა', en: '📖 Prose' },
+                            keywords: [
+                                { id: 'novel', name: { ka: 'რომანი', en: 'Novel' } },
+                                { id: 'antagonist', name: { ka: 'ანტაგონისტი', en: 'Antagonist' } },
+                                { id: 'detective', name: { ka: 'დეტექტივი', en: 'Detective' } },
+                                { id: 'dystopia', name: { ka: 'დისტოპია', en: 'Dystopia' } },
+                                { id: 'epistolary-novel', name: { ka: 'ეპისტოლარული რომანი', en: 'Epistolary novel' } },
+                                { id: 'epilogue', name: { ka: 'ეპილოგი', en: 'Epilogue' } },
+                                { id: 'historical-novel', name: { ka: 'ისტორიული', en: 'Historical' } },
+                                { id: 'character-lit', name: { ka: 'პერსონაჟი', en: 'Character' } },
+                                { id: 'prologue', name: { ka: 'პროლოგი', en: 'Prologue' } },
+                                { id: 'protagonist', name: { ka: 'პროტაგონისტი', en: 'Protagonist' } },
+                                { id: 'adventure', name: { ka: 'სათავგადასავლო', en: 'Adventure' } },
+                                { id: 'science-fiction', name: { ka: 'სამეცნიერო ფანტასტიკა', en: 'Science fiction' } },
+                                { id: 'romance-novel', name: { ka: 'სასიყვარულო', en: 'Romance' } },
+                                { id: 'plot', name: { ka: 'სიუჟეტი', en: 'Plot' } },
+                                { id: 'utopia', name: { ka: 'უტოპია', en: 'Utopia' } },
+                                { id: 'fantasy-novel', name: { ka: 'ფენტეზი', en: 'Fantasy' } },
+                                { id: 'psychological-novel', name: { ka: 'ფსიქოლოგიური', en: 'Psychological' } },
+                                { id: 'chapter', name: { ka: 'თავი', en: 'Chapter' } },
+                                { id: 'climax', name: { ka: 'კულმინაცია', en: 'Climax' } },
+                                { id: 'short-story-novella', name: { ka: 'მოთხრობა და ნოველა', en: 'Short Story and Novella' } },
+                                { id: 'short-prose', name: { ka: 'მოკლე პროზა', en: 'Short prose' } },
+                                { id: 'short-story', name: { ka: 'მოთხრობა', en: 'Short story' } },
+                                { id: 'novella', name: { ka: 'ნოველა', en: 'Novella' } },
+                                { id: 'twist-ending', name: { ka: 'პუანტი (მოულოდნელი ფინალი)', en: 'Twist ending' } },
+                                { id: 'fable-prose', name: { ka: 'იგავ-არაკი', en: 'Fable' } },
+                                { id: 'essays', name: { ka: 'ესეისტიკა', en: 'Essays' } },
+                                { id: 'essay', name: { ka: 'ესე', en: 'Essay' } },
+                                { id: 'criticism', name: { ka: 'კრიტიკა', en: 'Criticism' } },
+                                { id: 'publicism', name: { ka: 'პუბლიცისტიკა', en: 'Publicism' } },
+                                { id: 'article', name: { ka: 'სტატია', en: 'Article' } },
+                                { id: 'feuilleton', name: { ka: 'ფელეტონი', en: 'Feuilleton' } },
+                                { id: 'pamphlet', name: { ka: 'პამფლეტი', en: 'Pamphlet' } },
+                                { id: 'non-fiction-prose', name: { ka: 'დოკუმენტური პროზა', en: 'Non-fiction Prose' } },
+                                { id: 'autobiography', name: { ka: 'ავტობიოგრაფია', en: 'Autobiography' } },
+                                { id: 'biography', name: { ka: 'ბიოგრაფია', en: 'Biography' } },
+                                { id: 'diary', name: { ka: 'დღიური', en: 'Diary' } },
+                                { id: 'memoirs', name: { ka: 'მემუარები', en: 'Memoirs' } },
+                                { id: 'travelogue', name: { ka: 'ტრაველოგი (სამოგზაურო პროზა)', en: 'Travelogue' } },
+                            ]
+                        },
+                        {
+                            id: 'poetry',
+                            name: { ka: '✒️ პოეზია', en: '✒️ Poetry' },
+                            keywords: [
+                                { id: 'alliteration', name: { ka: 'ალიტერაცია', en: 'Alliteration' } },
+                                { id: 'assonance', name: { ka: 'ასონანსი', en: 'Assonance' } },
+                                { id: 'ballad', name: { ka: 'ბალადა', en: 'Ballad' } },
+                                { id: 'epithet', name: { ka: 'ეპითეტი', en: 'Epithet' } },
+                                { id: 'epic', name: { ka: 'ეპოსი', en: 'Epic' } },
+                                { id: 'free-verse', name: { ka: 'ვერლიბრი (თავისუფალი ლექსი)', en: 'Free verse' } },
+                                { id: 'blank-verse', name: { ka: 'თეთრი ლექსი', en: 'Blank verse' } },
+                                { id: 'lyric-poetry', name: { ka: 'ლირიკა', en: 'Lyric poetry' } },
+                                { id: 'poem', name: { ka: 'ლექსი', en: 'Poem' } },
+                                { id: 'metaphor', name: { ka: 'მეტაფორა', en: 'Metaphor' } },
+                                { id: 'ode', name: { ka: 'ოდა', en: 'Ode' } },
+                                { id: 'long-narrative-poem', name: { ka: 'პოემა', en: 'Poem (long narrative)' } },
+                                { id: 'rhyme', name: { ka: 'რითმა', en: 'Rhyme' } },
+                                { id: 'rhythm-poetry', name: { ka: 'რიტმი', en: 'Rhythm' } },
+                                { id: 'sonnet', name: { ka: 'სონეტი', en: 'Sonnet' } },
+                                { id: 'stanza', name: { ka: 'სტროფი', en: 'Stanza' } },
+                                { id: 'line-verse', name: { ka: 'ტაეპი', en: 'Line/Verse' } },
+                                { id: 'simile', name: { ka: 'შედარება', en: 'Simile' } },
+                                { id: 'haiku', name: { ka: 'ჰაიკუ', en: 'Haiku' } },
+                                { id: 'hyperbole', name: { ka: 'ჰიპერბოლა', en: 'Hyperbole' } },
+                                { id: 'elegy', name: { ka: 'ელეგია', en: 'Elegy' } },
+                            ]
+                        },
+                        {
+                            id: 'dramaturgy',
+                            name: { ka: '🎭 დრამატურგია (თეატრისთვის)', en: '🎭 Dramaturgy (for Theatre)' },
+                            keywords: [
+                                { id: 'tragedy', name: { ka: 'ტრაგედია', en: 'Tragedy' } },
+                                { id: 'fate', name: { ka: 'ბედისწერა', en: 'Fate' } },
+                                { id: 'catharsis', name: { ka: 'კათარზისი', en: 'Catharsis' } },
+                                { id: 'conflict', name: { ka: 'კონფლიქტი', en: 'Conflict' } },
+                                { id: 'tragedy-term', name: { ka: 'ტრაგედია', en: 'Tragedy' } },
+                                { id: 'tragic-hero', name: { ka: 'ტრაგიკული გმირი', en: 'Tragic hero' } },
+                                { id: 'hamartia', name: { ka: 'ჰამარტია', en: 'Hamartia' } },
+                                { id: 'comedy', name: { ka: 'კომედია', en: 'Comedy' } },
+                                { id: 'grotesque', name: { ka: 'გროტესკი', en: 'Grotesque' } },
+                                { id: 'humor', name: { ka: 'იუმორი', en: 'Humor' } },
+                                { id: 'comedy-term', name: { ka: 'კომედია', en: 'Comedy' } },
+                                { id: 'parody', name: { ka: 'პაროდია', en: 'Parody' } },
+                                { id: 'satire', name: { ka: 'სატირა', en: 'Satire' } },
+                                { id: 'farce', name: { ka: 'ფარსი', en: 'Farce' } },
+                                { id: 'vaudeville', name: { ka: 'ვოდევილი', en: 'Vaudeville' } },
+                                { id: 'drama', name: { ka: 'დრამა', en: 'Drama' } },
+                                { id: 'dialogue', name: { ka: 'დიალოგი', en: 'Dialogue' } },
+                                { id: 'drama-term', name: { ka: 'დრამა', en: 'Drama' } },
+                                { id: 'act', name: { ka: 'მოქმედება', en: 'Act' } },
+                                { id: 'monologue', name: { ka: 'მონოლოგი', en: 'Monologue' } },
+                                { id: 'play', name: { ka: 'პიესა', en: 'Play' } },
+                                { id: 'stage-direction', name: { ka: 'რემარკა', en: 'Stage direction' } },
+                                { id: 'scene', name: { ka: 'სცენა', en: 'Scene' } },
+                                { id: 'tragicomedy', name: { ka: 'ტრაგიკომედია', en: 'Tragicomedy' } },
+                            ]
+                        },
+                        {
+                            id: 'childrens-literature',
+                            name: { ka: '🧸 საბავშვო ლიტერატურა', en: '🧸 Children\'s Literature' },
+                            keywords: [
+                                { id: 'riddle', name: { ka: 'გამოცანა', en: 'Riddle' } },
+                                { id: 'fairy-tale', name: { ka: 'ზღაპარი', en: 'Fairy tale' } },
+                                { id: 'fable-childrens', name: { ka: 'იგავ-არაკი', en: 'Fable' } },
+                                { id: 'nursery-rhyme', name: { ka: 'საბავშვო ლექსი', en: 'Nursery rhyme' } },
+                                { id: 'young-adult-novel', name: { ka: 'საყმაწვილო რომანი', en: 'Young adult novel' } },
+                                { id: 'fantasy-childrens', name: { ka: 'ფენტეზი', en: 'Fantasy' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'literary-theory-analysis',
+                    name: { ka: '🔬 II. ლიტერატურის თეორია და ანალიზი', en: '🔬 II. Literary Theory and Analysis' },
+                    subSections: [
+                        {
+                            id: 'literary-theory',
+                            name: { ka: '🧠 ლიტერატურის თეორია', en: '🧠 Literary Theory' },
+                            keywords: [
+                                { id: 'deconstruction', name: { ka: 'დეკონსტრუქცია', en: 'Deconstruction' } },
+                                { id: 'marxist-criticism', name: { ka: 'მარქსისტული კრიტიკა', en: 'Marxist criticism' } },
+                                { id: 'postmodernism-lit', name: { ka: 'პოსტმოდერნიზმი', en: 'Postmodernism' } },
+                                { id: 'post-structuralism', name: { ka: 'პოსტსტრუქტურალიზმი', en: 'Post-structuralism' } },
+                                { id: 'structuralism', name: { ka: 'სტრუქტურალიზმი', en: 'Structuralism' } },
+                                { id: 'feminist-criticism', name: { ka: 'ფემინისტური კრიტიკა', en: 'Feminist criticism' } },
+                                { id: 'formalism', name: { ka: 'ფორმალიზმი', en: 'Formalism' } },
+                                { id: 'psychoanalysis-lit', name: { ka: 'ფსიქოანალიზი', en: 'Psychoanalysis' } },
+                                { id: 'reception-theory', name: { ka: 'რეცეფციის თეორია', en: 'Reception theory' } },
+                                { id: 'hermeneutics', name: { ka: 'ჰერმენევტიკა', en: 'Hermeneutics' } },
+                            ]
+                        },
+                        {
+                            id: 'literary-criticism',
+                            name: { ka: '✍️ ლიტერატურული კრიტიკა', en: '✍️ Literary Criticism' },
+                            keywords: [
+                                { id: 'analysis', name: { ka: 'ანალიზი', en: 'Analysis' } },
+                                { id: 'interpretation-lit', name: { ka: 'ინტერპრეტაცია', en: 'Interpretation' } },
+                                { id: 'criticism-lit', name: { ka: 'კრიტიკა', en: 'Criticism' } },
+                                { id: 'literary-essay', name: { ka: 'ლიტერატურული ესე', en: 'Literary essay' } },
+                                { id: 'review', name: { ka: 'რეცენზია', en: 'Review' } },
+                                { id: 'evaluation-lit', name: { ka: 'შეფასება', en: 'Evaluation' } },
+                            ]
+                        },
+                        {
+                            id: 'comparative-literature',
+                            name: { ka: '🌍 შედარებითი ლიტერატურათმცოდნეობა (კომპარატივისტიკა)', en: '🌍 Comparative Literature' },
+                            keywords: [
+                                { id: 'intertextuality', name: { ka: 'ინტერტექსტუალობა', en: 'Intertextuality' } },
+                                { id: 'comparativistics', name: { ka: 'კომპარატივისტიკა', en: 'Comparativistics' } },
+                                { id: 'cultural-context', name: { ka: 'კულტურული კონტექსტი', en: 'Cultural context' } },
+                                { id: 'literary-influence', name: { ka: 'ლიტერატურული გავლენა', en: 'Literary influence' } },
+                                { id: 'translation-theory', name: { ka: 'თარგმანის თეორია', en: 'Translation theory' } },
+                            ]
+                        },
+                        {
+                            id: 'history-of-world-literature',
+                            name: { ka: '⏳ მსოფლიო ლიტერატურის ისტორია', en: '⏳ History of World Literature' },
+                            keywords: [
+                                { id: 'ancient-literature', name: { ka: 'ანტიკური ლიტერატურა', en: 'Ancient literature' } },
+                                { id: 'enlightenment-lit', name: { ka: 'განმანათლებლობა', en: 'Enlightenment' } },
+                                { id: 'classicism-lit', name: { ka: 'კლასიციზმი', en: 'Classicism' } },
+                                { id: 'modernism-lit', name: { ka: 'მოდერნიზმი', en: 'Modernism' } },
+                                { id: 'realism-lit', name: { ka: 'რეალიზმი', en: 'Realism' } },
+                                { id: 'renaissance-lit', name: { ka: 'რენესანსი', en: 'Renaissance' } },
+                                { id: 'romanticism-lit', name: { ka: 'რომანტიზმი', en: 'Romanticism' } },
+                                { id: 'medieval-literature', name: { ka: 'შუა საუკუნეების ლიტერატურა', en: 'Medieval literature' } },
+                            ]
+                        },
+                        {
+                            id: 'narratology',
+                            name: { ka: '📖 ნარატოლოგია', en: '📖 Narratology' },
+                            keywords: [
+                                { id: 'narrative', name: { ka: 'ნარატივი', en: 'Narrative' } },
+                                { id: 'narrator', name: { ka: 'ნარატორი (მთხრობელი)', en: 'Narrator' } },
+                                { id: 'character-narratology', name: { ka: 'პერსონაჟი', en: 'Character' } },
+                                { id: 'plot-narratology', name: { ka: 'სიუჟეტი', en: 'Plot' } },
+                                { id: 'fabula', name: { ka: 'ფაბულა', en: 'Fabula' } },
+                                { id: 'chronology', name: { ka: 'ქრონოლოგია', en: 'Chronology' } },
+                                { id: 'point-of-view', name: { ka: 'თხრობის პერსპექტივა', en: 'Point of view' } },
+                                { id: 'focalization', name: { ka: 'ფოკალიზაცია', en: 'Focalization' } },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'mythology-folklore-heritage',
+            name: { ka: '📜 მითოლოგია, ფოლკლორი და მემკვიდრეობა', en: '📜 Mythology, Folklore, and Heritage' },
+            sections: [
+                {
+                    id: 'mythology',
+                    name: { ka: '✨ I. მითოლოგია', en: '✨ I. Mythology' },
+                    subSections: [
+                        {
+                            id: 'mythology-by-regions-cultures',
+                            name: { ka: '🌐 მითოლოგია რეგიონების და კულტურების მიხედვით', en: '🌐 Mythology by Regions and Cultures' },
+                            keywords: [
+                                { id: 'greco-roman-mythology', name: { ka: 'ბერძნულ-რომაული', en: 'Greco-Roman' } },
+                                { id: 'hero-myth', name: { ka: 'გმირი (ჰერაკლე, აქილევსი, ოდისევსი)', en: 'Hero (Heracles, Achilles, Odysseus)' } },
+                                { id: 'gods-greco-roman', name: { ka: 'ღმერთები (ზევსი/იუპიტერი, ჰერა/იუნონა, აპოლონი, ათენა/მინერვა)', en: 'Gods (Zeus/Jupiter, Hera/Juno, Apollo, Athena/Minerva)' } },
+                                { id: 'centaur', name: { ka: 'კენტავრი', en: 'Centaur' } },
+                                { id: 'minotaur', name: { ka: 'მინოტავრი', en: 'Minotaur' } },
+                                { id: 'mount-olympus', name: { ka: 'ოლიმპოს მთა', en: 'Mount Olympus' } },
+                                { id: 'oracle', name: { ka: 'ორაკული', en: 'Oracle' } },
+                                { id: 'pantheon-myth', name: { ka: 'პანთეონი', en: 'Pantheon' } },
+                                { id: 'titan', name: { ka: 'ტიტანი', en: 'Titan' } },
+                                { id: 'trojan-war', name: { ka: 'ტროას ომი', en: 'Trojan War' } },
+                                { id: 'egyptian-mythology', name: { ka: 'ეგვიპტური', en: 'Egyptian' } },
+                                { id: 'anubis', name: { ka: 'ანუბისი', en: 'Anubis' } },
+                                { id: 'isis', name: { ka: 'ისიდა', en: 'Isis' } },
+                                { id: 'mummification', name: { ka: 'მუმიფიკაცია', en: 'Mummification' } },
+                                { id: 'osiris', name: { ka: 'ოსირისი', en: 'Osiris' } },
+                                { id: 'pyramids-myth', name: { ka: 'პირამიდები', en: 'Pyramids' } },
+                                { id: 'ra', name: { ka: 'რა', en: 'Ra' } },
+                                { id: 'afterlife', name: { ka: 'საიქიო', en: 'Afterlife' } },
+                                { id: 'sphinx', name: { ka: 'სფინქსი', en: 'Sphinx' } },
+                                { id: 'pharaoh-myth', name: { ka: 'ფარაონი', en: 'Pharaoh' } },
+                                { id: 'hieroglyphs', name: { ka: 'იეროგლიფები', en: 'Hieroglyphs' } },
+                                { id: 'norse-mythology', name: { ka: 'სკანდინავიური', en: 'Norse' } },
+                                { id: 'asgard', name: { ka: 'ასგარდი', en: 'Asgard' } },
+                                { id: 'valkyries', name: { ka: 'ვალკირიები', en: 'Valkyries' } },
+                                { id: 'valhalla', name: { ka: 'ვალჰალა', en: 'Valhalla' } },
+                                { id: 'vikings', name: { ka: 'ვიკინგები', en: 'Vikings' } },
+                                { id: 'yggdrasil', name: { ka: 'იგდრასილი', en: 'Yggdrasil' } },
+                                { id: 'gods-norse', name: { ka: 'ღმერთები (ოდინი, თორი, ლოკი)', en: 'Gods (Odin, Thor, Loki)' } },
+                                { id: 'ragnarok', name: { ka: 'რაგნაროკი', en: 'Ragnarök' } },
+                                { id: 'runes', name: { ka: 'რუნები', en: 'Runes' } },
+                                { id: 'sumerian-akkadian-mythology', name: { ka: 'შუმერო-აქადური', en: 'Sumerian-Akkadian' } },
+                                { id: 'anunnaki', name: { ka: 'ანუნაქები', en: 'Anunnaki' } },
+                                { id: 'epic-of-gilgamesh', name: { ka: 'გილგამეშის ეპოსი', en: 'Epic of Gilgamesh' } },
+                                { id: 'ziggurat-myth', name: { ka: 'ზიკურათი', en: 'Ziggurat' } },
+                                { id: 'gods-sumerian', name: { ka: 'ღმერთები (ენლილი, იშთარი, მარდუქი)', en: 'Gods (Enlil, Ishtar, Marduk)' } },
+                                { id: 'deluge-myth', name: { ka: 'წარღვნის მითი', en: 'Deluge myth' } },
+                                { id: 'indian-mythology', name: { ka: 'ინდური', en: 'Indian' } },
+                                { id: 'brahma-vishnu-shiva', name: { ka: 'ბრაჰმა, ვიშნუ, შივა', en: 'Brahma, Vishnu, Shiva' } },
+                                { id: 'vedas', name: { ka: 'ვედები', en: 'Vedas' } },
+                                { id: 'devas', name: { ka: 'დევები', en: 'Devas' } },
+                                { id: 'asuras', name: { ka: 'ასურები', en: 'Asuras' } },
+                                { id: 'yoga-myth', name: { ka: 'იოგა', en: 'Yoga' } },
+                                { id: 'karma', name: { ka: 'კარმა', en: 'Karma' } },
+                                { id: 'mahabharata', name: { ka: 'მაჰაბჰარატა', en: 'Mahabharata' } },
+                                { id: 'ramayana', name: { ka: 'რამაიანა', en: 'Ramayana' } },
+                                { id: 'nirvana', name: { ka: 'ნირვანა', en: 'Nirvana' } },
+                                { id: 'reincarnation', name: { ka: 'რეინკარნაცია', en: 'Reincarnation' } },
+                                { id: 'caucasian-georgian-mythology', name: { ka: 'კავკასიური (ქართული)', en: 'Caucasian (Georgian)' } },
+                                { id: 'amirani', name: { ka: 'ამირანი', en: 'Amirani' } },
+                                { id: 'badagoni', name: { ka: 'ბადაგონი', en: 'Badagoni' } },
+                                { id: 'dali', name: { ka: 'დალი', en: 'Dali' } },
+                                { id: 'devis-myth', name: { ka: 'დევები', en: 'Devis' } },
+                                { id: 'kopala', name: { ka: 'კოპალა', en: 'Kopala' } },
+                                { id: 'nart-sagas', name: { ka: 'ნარტების ეპოსი', en: 'Nart sagas' } },
+                                { id: 'paskunji', name: { ka: 'ფასკუნჯი', en: 'Paskunji' } },
+                                { id: 'kajis', name: { ka: 'ქაჯები', en: 'Kajis' } },
+                                { id: 'ghvtisshvili', name: { ka: 'ღვთისშვილები', en: 'Ghvtisshvili' } },
+                                { id: 'other-mythologies', name: { ka: 'სხვა მითოლოგიები', en: 'Other Mythologies' } },
+                                { id: 'celtic-mythology', name: { ka: 'კელტური', en: 'Celtic' } },
+                                { id: 'slavic-mythology', name: { ka: 'სლავური', en: 'Slavic' } },
+                                { id: 'chinese-mythology', name: { ka: 'ჩინური', en: 'Chinese' } },
+                                { id: 'japanese-mythology', name: { ka: 'იაპონური', en: 'Japanese' } },
+                                { id: 'mesoamerican-mythology', name: { ka: 'მესოამერიკული (აცტეკების, მაიას)', en: 'Mesoamerican (Aztec, Maya)' } },
+                            ]
+                        },
+                        {
+                            id: 'mythography-typology',
+                            name: { ka: '🧩 მითების კვლევა და ტიპოლოგია', en: '🧩 Mythography and Typology' },
+                            keywords: [
+                                { id: 'classification-of-myths', name: { ka: 'მითების კლასიფიკაცია', en: 'Classification of Myths' } },
+                                { id: 'anthropogonic', name: { ka: 'ანთროპოგონიური (ადამიანის შექმნა)', en: 'Anthropogonic' } },
+                                { id: 'eschatological', name: { ka: 'ესქატოლოგიური (სამყაროს აღსასრული)', en: 'Eschatological' } },
+                                { id: 'aetiological', name: { ka: 'ეტიოლოგიური (მოვლენის ახსნა)', en: 'Aetiological' } },
+                                { id: 'cosmogonic', name: { ka: 'კოსმოგონიური (სამყაროს შექმნა)', en: 'Cosmogonic' } },
+                                { id: 'theogonic', name: { ka: 'თეოგონიური (ღმერთების წარმოშობა)', en: 'Theogonic' } },
+                                { id: 'archetypes-symbols', name: { ka: 'არქეტიპები და სიმბოლოები', en: 'Archetypes and Symbols' } },
+                                { id: 'archetype', name: { ka: 'არქეტიპი (გმირი, ბრძენი, ტრიქსტერი, დედა-ღვთაება)', en: 'Archetype (Hero, Sage, Trickster, Mother Goddess)' } },
+                                { id: 'jungian-archetypes', name: { ka: 'იუნგის არქეტიპები', en: 'Jungian archetypes' } },
+                                { id: 'mythologem', name: { ka: 'მითოლოგემა', en: 'Mythologem' } },
+                                { id: 'symbol-myth', name: { ka: 'სიმბოლო', en: 'Symbol' } },
+                                { id: 'world-tree', name: { ka: 'კოსმიური ხე', en: 'World tree' } },
+                                { id: 'comparative-mythology', name: { ka: 'შედარებითი მითოლოგია', en: 'Comparative Mythology' } },
+                                { id: 'cultural-parallels', name: { ka: 'კულტურული პარალელები', en: 'Cultural parallels' } },
+                                { id: 'comparison-of-mythological-plots', name: { ka: 'მითოლოგიური სიუჟეტების შედარება', en: 'Comparison of mythological plots' } },
+                                { id: 'monomyth', name: { ka: 'მონომითი (გმირის მოგზაურობა)', en: 'Monomyth (Hero\'s journey)' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'folklore',
+                    name: { ka: '👨‍👩‍👧‍👦 II. ფოლკლორი (ხალხური სიბრძნე და ტრადიციები)', en: '👨‍👩‍👧‍👦 II. Folklore (Folk Wisdom and Traditions)' },
+                    subSections: [
+                        {
+                            id: 'oral-traditions',
+                            name: { ka: '🗣️ ზეპირსიტყვიერება', en: '🗣️ Oral Traditions' },
+                            keywords: [
+                                { id: 'proverb', name: { ka: 'ანდაზა', en: 'Proverb' } },
+                                { id: 'aphorism', name: { ka: 'აფორიზმი', en: 'Aphorism' } },
+                                { id: 'riddle-folk', name: { ka: 'გამოცანა', en: 'Riddle' } },
+                                { id: 'epic-folk', name: { ka: 'ეპოსი', en: 'Epic' } },
+                                { id: 'tale', name: { ka: 'ზღაპარი', en: 'Tale' } },
+                                { id: 'legend-folk', name: { ka: 'თქმულება', en: 'Legend' } },
+                                { id: 'legend', name: { ka: 'ლეგენდა', en: 'Legend' } },
+                                { id: 'myth-folk', name: { ka: 'მითი', en: 'Myth' } },
+                                { id: 'folk-ballad', name: { ka: 'ხალხური ბალადა', en: 'Folk ballad' } },
+                                { id: 'folk-poetry', name: { ka: 'ხალხური პოეზია (საგმირო, სატრფიალო, შრომის, სარიტუალო)', en: 'Folk poetry (Heroic, Love, Work, Ritual)' } },
+                                { id: 'folk-wisdom', name: { ka: 'ხალხური სიბრძნე', en: 'Folk wisdom' } },
+                                { id: 'shairi', name: { ka: 'შაირი', en: 'Shairi' } },
+                            ]
+                        },
+                        {
+                            id: 'rituals-customs',
+                            name: { ka: '🎉 რიტუალები და წეს-ჩვეულებები', en: '🎉 Rituals and Customs' },
+                            keywords: [
+                                { id: 'rites-of-passage', name: { ka: 'გარდამავალი რიტუალები', en: 'Rites of passage' } },
+                                { id: 'calendar-festivals', name: { ka: 'კალენდარული დღესასწაულები (ბერიკაობა, ჭიაკოკონობა, მოსავლის აღება)', en: 'Calendar festivals (Berikaoba, Chiakokonoba, Harvest festival)' } },
+                                { id: 'family-rituals', name: { ka: 'საოჯახო რიტუალები (ქორწილი, ნათლობა, დაკრძალვა)', en: 'Family rituals (Wedding, Baptism, Funeral)' } },
+                                { id: 'seasonal-rituals', name: { ka: 'სეზონური რიტუალები', en: 'Seasonal rituals' } },
+                            ]
+                        },
+                        {
+                            id: 'material-folklore',
+                            name: { ka: '🛠️ მატერიალური ფოლკლორი', en: '🛠️ Material Folklore' },
+                            keywords: [
+                                { id: 'national-costume', name: { ka: 'ეროვნული სამოსი (ჩოხა-ახალუხი)', en: 'National costume (Chokha-Akhalukhi)' } },
+                                { id: 'cultural-landscape', name: { ka: 'კულტურული ლანდშაფტი', en: 'Cultural landscape' } },
+                                { id: 'blacksmithing', name: { ka: 'მჭედლობა', en: 'Blacksmithing' } },
+                                { id: 'pottery-folk', name: { ka: 'მეთუნეობა', en: 'Pottery' } },
+                                { id: 'ornament-folk', name: { ka: 'ორნამენტი', en: 'Ornament' } },
+                                { id: 'goldsmithing-folk', name: { ka: 'ოქრომჭედლობა', en: 'Goldsmithing' } },
+                                { id: 'traditional-dwelling', name: { ka: 'ტრადიციული საცხოვრებელი (ოდა-სახლი, კოშკი)', en: 'Traditional dwelling (Oda house, Tower)' } },
+                                { id: 'embroidery-folk', name: { ka: 'ქარგვა', en: 'Embroidery' } },
+                                { id: 'weaving-folk', name: { ka: 'ქსოვა', en: 'Weaving' } },
+                                { id: 'folk-architecture', name: { ka: 'ხალხური არქიტექტურა', en: 'Folk architecture' } },
+                                { id: 'woodcarving', name: { ka: 'ხეზე კვეთა', en: 'Woodcarving' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'cultural-heritage',
+                    name: { ka: '🌍 III. კულტურული მემკვიდრეობა', en: '🌍 III. Cultural Heritage' },
+                    subSections: [
+                        {
+                            id: 'tangible-heritage',
+                            name: { ka: '🏛️ მატერიალური მემკვიდრეობა', en: '🏛️ Tangible Heritage' },
+                            keywords: [
+                                { id: 'archaeological-architectural-monument', name: { ka: 'არქეოლოგიური/არქიტექტურული ძეგლი', en: 'Archaeological/Architectural monument' } },
+                                { id: 'historic-landscape', name: { ka: 'ისტორიული ლანდშაფტი', en: 'Historic landscape' } },
+                                { id: 'historic-city', name: { ka: 'ისტორიული ქალაქი', en: 'Historic city' } },
+                                { id: 'movable-heritage', name: { ka: 'მოძრავი ძეგლები', en: 'Movable heritage' } },
+                                { id: 'museum-exhibit', name: { ka: 'სამუზეუმო ექსპონატი', en: 'Museum exhibit' } },
+                                { id: 'immovable-heritage', name: { ka: 'უძრავი ძეგლები', en: 'Immovable heritage' } },
+                                { id: 'manuscript-heritage', name: { ka: 'ხელნაწერი', en: 'Manuscript' } },
+                            ]
+                        },
+                        {
+                            id: 'intangible-heritage',
+                            name: { ka: '🎶 არამატერიალური მემკვიდრეობა', en: '🎶 Intangible Heritage' },
+                            keywords: [
+                                { id: 'epic-tales', name: { ka: 'ეპიკური თქმულებები', en: 'Epic tales' } },
+                                { id: 'oral-traditions-heritage', name: { ka: 'ზეპირსიტყვიერება', en: 'Oral traditions' } },
+                                { id: 'traditional-craftsmanship-heritage', name: { ka: 'ტრადიციული ხელოსნობა (ქვევრის დამზადება, ტიხრული მინანქარი)', en: 'Traditional craftsmanship (Qvevri making, Cloisonné enamel)' } },
+                                { id: 'rituals-heritage', name: { ka: 'რიტუალები', en: 'Rituals' } },
+                                { id: 'social-practice', name: { ka: 'სოციალური პრაქტიკა (ქართული სუფრა)', en: 'Social practice (Georgian Supra)' } },
+                                { id: 'festivals', name: { ka: 'ფესტივალები', en: 'Festivals' } },
+                                { id: 'georgian-polyphony', name: { ka: 'ქართული პოლიფონია', en: 'Georgian polyphony' } },
+                                { id: 'folk-dance', name: { ka: 'ხალხური ცეკვა', en: 'Folk dance' } },
+                            ]
+                        },
+                        {
+                            id: 'heritage-protection-management',
+                            name: { ka: '🛡️ მემკვიდრეობის დაცვა და მართვა', en: '🛡️ Heritage Protection and Management' },
+                            keywords: [
+                                { id: 'unesco', name: { ka: 'UNESCO', en: 'UNESCO' } },
+                                { id: 'authenticity', name: { ka: 'ავთენტურობა', en: 'Authenticity' } },
+                                { id: 'list-of-intangible-cultural-heritage', name: { ka: 'არამატერიალური კულტურული მემკვიდრეობის სია', en: 'List of Intangible Cultural Heritage' } },
+                                { id: 'archive-heritage', name: { ka: 'არქივი', en: 'Archive' } },
+                                { id: 'exhibition', name: { ka: 'ექსპოზიცია', en: 'Exhibition' } },
+                                { id: 'collection-heritage', name: { ka: 'კოლექცია', en: 'Collection' } },
+                                { id: 'conservation-heritage', name: { ka: 'კონსერვაცია', en: 'Conservation' } },
+                                { id: 'world-heritage-site', name: { ka: 'მსოფლიო მემკვიდრეობის ძეგლი', en: 'World Heritage Site' } },
+                                { id: 'museum', name: { ka: 'მუზეუმი', en: 'Museum' } },
+                                { id: 'restoration', name: { ka: 'რესტავრაცია', en: 'Restoration' } },
+                                { id: 'fund-collection', name: { ka: 'ფონდი', en: 'Collection/Fund' } },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'performing-arts',
+            name: { ka: '🎭 საშემსრულებლო ხელოვნება', en: '🎭 Performing Arts' },
+            sections: [
+                {
+                    id: 'theatre-history-genres',
+                    name: { ka: '📜 თეატრის ისტორია და ჟანრები', en: '📜 History and Genres of Theatre' },
+                    subSections: [
+                        {
+                            id: 'theatre-history-keywords',
+                            name: { ka: 'თეატრის ისტორია', en: 'History of Theatre'},
+                            keywords: [
+                                { id: 'theatre-of-the-absurd', name: { ka: 'აბსურდის თეატრი', en: 'Theatre of the Absurd' } },
+                                { id: 'ancient-theatre', name: { ka: 'ანტიკური თეატრი (ტრაგედია, კომედია, სატირა)', en: 'Ancient theatre (Tragedy, Comedy, Satire)' } },
+                                { id: 'epic-theatre', name: { ka: 'ეპიკური თეატრი (ბრეხტი)', en: 'Epic theatre (Brecht)' } },
+                                { id: 'medieval-renaissance-theatre', name: { ka: 'თეატრი (შუა საუკუნეების, რენესანსის)', en: 'Theatre (Medieval, Renaissance)' } },
+                                { id: 'kabuki', name: { ka: 'კაბუკი', en: 'Kabuki' } },
+                                { id: 'commedia-dellarte', name: { ka: 'კომედია დელ\'არტე', en: 'Commedia dell\'arte' } },
+                                { id: 'mystery-play', name: { ka: 'მისტერია', en: 'Mystery play' } },
+                                { id: 'morality-play', name: { ka: 'მორალიტე', en: 'Morality play' } },
+                                { id: 'noh-theatre', name: { ka: 'ნო (თეატრი)', en: 'Noh (theatre)' } },
+                                { id: 'realism-theatre', name: { ka: 'რეალიზმი', en: 'Realism' } },
+                                { id: 'symbolism-theatre', name: { ka: 'სიმბოლიზმი', en: 'Symbolism' } },
+                                { id: 'shakespearean-theatre', name: { ka: 'შექსპირის თეატრი', en: 'Shakespearean theatre' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'theatrical-art-components',
+                    name: { ka: '🎬 თეატრალური ხელოვნების კომპონენტები', en: '🎬 Components of Theatrical Art' },
+                    subSections: [
+                        {
+                            id: 'theatrical-art-keywords',
+                            name: { ka: 'თეატრალური კომპონენტები', en: 'Theatrical Components'},
+                            keywords: [
+                                { id: 'typecasting', name: { ka: 'ამპლუა', en: 'Typecasting' } },
+                                { id: 'intermission', name: { ka: 'ანტრაქტი', en: 'Intermission' } },
+                                { id: 'makeup', name: { ka: 'გრიმი', en: 'Makeup' } },
+                                { id: 'staging', name: { ka: 'დადგმა', en: 'Staging' } },
+                                { id: 'scenery-set', name: { ka: 'დეკორაცია', en: 'Scenery/Set' } },
+                                { id: 'playwright', name: { ka: 'დრამატურგი', en: 'Playwright' } },
+                                { id: 'dramaturgy', name: { ka: 'დრამატურგია', en: 'Dramaturgy' } },
+                                { id: 'improvisation', name: { ka: 'იმპროვიზაცია', en: 'Improvisation' } },
+                                { id: 'interpretation-theatre', name: { ka: 'ინტერპრეტაცია', en: 'Interpretation' } },
+                                { id: 'costume', name: { ka: 'კოსტიუმი', en: 'Costume' } },
+                                { id: 'fourth-wall', name: { ka: 'მეოთხე კედელი', en: 'Fourth wall' } },
+                                { id: 'mise-en-scene', name: { ka: 'მიზანსცენა', en: 'Mise-en-scène' } },
+                                { id: 'actor', name: { ka: 'მსახიობი', en: 'Actor' } },
+                                { id: 'play-theatre', name: { ka: 'პიესა', en: 'Play' } },
+                                { id: 'directing', name: { ka: 'რეჟისურა', en: 'Directing' } },
+                                { id: 'rehearsal', name: { ka: 'რეპეტიცია', en: 'Rehearsal' } },
+                                { id: 'prop', name: { ka: 'რეკვიზიტი', en: 'Prop' } },
+                                { id: 'role', name: { ka: 'როლი', en: 'Role' } },
+                                { id: 'acting', name: { ka: 'სამსახიობო ოსტატობა', en: 'Acting' } },
+                                { id: 'script-theatre', name: { ka: 'სცენარი', en: 'Script' } },
+                                { id: 'scenography', name: { ka: 'სცენოგრაფია', en: 'Scenography' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'forms-of-theatre',
+                    name: { ka: '🎪 თეატრის ფორმები', en: '🎪 Forms of Theatre' },
+                    subSections: [
+                        {
+                            id: 'theatre-forms-keywords',
+                            name: { ka: 'თეატრის ფორმები', en: 'Forms of Theatre' },
+                            keywords: [
+                                { id: 'dramatic-theatre', name: { ka: 'დრამატული თეატრი', en: 'Dramatic theatre' } },
+                                { id: 'experimental-theatre', name: { ka: 'ექსპერიმენტული თეატრი', en: 'Experimental theatre' } },
+                                { id: 'puppet-theatre', name: { ka: 'თოჯინების თეატრი', en: 'Puppet theatre' } },
+                                { id: 'immersive-theatre', name: { ka: 'იმერსიული თეატრი', en: 'Immersive theatre' } },
+                                { id: 'musical-theatre', name: { ka: 'მუსიკალური თეატრი (ოპერა, ოპერეტა, მიუზიკლი)', en: 'Musical theatre (Opera, Operetta, Musical)' } },
+                                { id: 'pantomime', name: { ka: 'პანტომიმა', en: 'Pantomime' } },
+                                { id: 'street-theatre', name: { ka: 'ქუჩის თეატრი', en: 'Street theatre' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'cinematography',
+                    name: { ka: '🎬 II. კინემატოგრაფია (კინო)', en: '🎬 II. Cinematography (Film)' },
+                    subSections: [
+                        {
+                            id: 'film-history-movements',
+                            name: { ka: '🎞️ კინოს ისტორია და მიმდინარეობები', en: '🎞️ History and Movements of Cinema' },
+                            keywords: [
+                                { id: 'german-expressionism', name: { ka: 'გერმანული ექსპრესიონიზმი', en: 'German Expressionism' } },
+                                { id: 'italian-neorealism', name: { ka: 'იტალიური ნეორეალიზმი', en: 'Italian Neorealism' } },
+                                { id: 'cinematography-term', name: { ka: 'კინემატოგრაფი', en: 'Cinematography' } },
+                                { id: 'classical-hollywood', name: { ka: 'კლასიკური ჰოლივუდი', en: 'Classical Hollywood' } },
+                                { id: 'silent-film', name: { ka: 'მუნჯი კინო', en: 'Silent film' } },
+                                { id: 'film-noir', name: { ka: 'ნუარი', en: 'Film noir' } },
+                                { id: 'auteur-cinema', name: { ka: 'საავტორო კინო', en: 'Auteur cinema' } },
+                                { id: 'soviet-montage-theory', name: { ka: 'საბჭოთა მონტაჟის სკოლა', en: 'Soviet montage theory' } },
+                                { id: 'studio-system', name: { ka: 'სტუდიური სისტემა', en: 'Studio system' } },
+                                { id: 'french-new-wave', name: { ka: 'ფრანგული ახალი ტალღა', en: 'French New Wave' } },
+                            ]
+                        },
+                        {
+                            id: 'film-professions-processes',
+                            name: { ka: '🎥 კინოპროფესიები და პროცესები', en: '🎥 Film Professions and Processes' },
+                            keywords: [
+                                { id: 'shot', name: { ka: 'კადრი', en: 'Shot' } },
+                                { id: 'storyboarding', name: { ka: 'კადრირება (Storyboard)', en: 'Storyboarding' } },
+                                { id: 'camera', name: { ka: 'კამერა', en: 'Camera' } },
+                                { id: 'casting', name: { ka: 'კასტინგი', en: 'Casting' } },
+                                { id: 'stunt-performer', name: { ka: 'კასკადიორი', en: 'Stunt performer' } },
+                                { id: 'cinematographer', name: { ka: 'კინოოპერატორი', en: 'Cinematographer' } },
+                                { id: 'film-score', name: { ka: 'კინომუსიკა', en: 'Film score' } },
+                                { id: 'composer-film', name: { ka: 'კომპოზიტორი', en: 'Composer' } },
+                                { id: 'location', name: { ka: 'ლოკაცია', en: 'Location' } },
+                                { id: 'editing', name: { ka: 'მონტაჟი', en: 'Editing' } },
+                                { id: 'post-production', name: { ka: 'პოსტ-პროდუქცია', en: 'Post-production' } },
+                                { id: 'producer', name: { ka: 'პროდიუსერი', en: 'Producer' } },
+                                { id: 'director-film', name: { ka: 'რეჟისორი', en: 'Director' } },
+                                { id: 'cinematography-art', name: { ka: 'საოპერატორო ხელოვნება', en: 'Cinematography' } },
+                                { id: 'soundtrack', name: { ka: 'საუნდტრეკი', en: 'Soundtrack' } },
+                                { id: 'screenplay', name: { ka: 'სცენარი', en: 'Screenplay' } },
+                                { id: 'screenwriter', name: { ka: 'სცენარისტი', en: 'Screenwriter' } },
+                                { id: 'color-grading', name: { ka: 'ფერის კორექცია', en: 'Color grading' } },
+                                { id: 'sound-design-film', name: { ka: 'ხმის დიზაინი', en: 'Sound design' } },
+                                { id: 'vfx', name: { ka: 'ვიზუალური ეფექტები (VFX)', en: 'Visual effects (VFX)' } },
+                            ]
+                        },
+                        {
+                            id: 'film-genres',
+                            name: { ka: '🍿 კინოს ჟანრები', en: '🍿 Film Genres' },
+                            keywords: [
+                                { id: 'animation-film', name: { ka: 'ანიმაციური კინო', en: 'Animation' } },
+                                { id: 'biopic', name: { ka: 'ბიოგრაფიული ფილმი', en: 'Biopic' } },
+                                { id: 'documentary-film', name: { ka: 'დოკუმენტური კინო', en: 'Documentary' } },
+                                { id: 'drama-film', name: { ka: 'დრამა', en: 'Drama' } },
+                                { id: 'western', name: { ka: 'ვესტერნი', en: 'Western' } },
+                                { id: 'thriller', name: { ka: 'თრილერი', en: 'Thriller' } },
+                                { id: 'historical-film', name: { ka: 'ისტორიული ფილმი', en: 'Historical film' } },
+                                { id: 'comedy-film', name: { ka: 'კომედია', en: 'Comedy' } },
+                                { id: 'action-film', name: { ka: 'მძაფრსიუჟეტიანი', en: 'Action' } },
+                                { id: 'sci-fi-film', name: { ka: 'სამეცნიერო ფანტასტიკა', en: 'Science fiction' } },
+                                { id: 'horror', name: { ka: 'საშინელებათა', en: 'Horror' } },
+                                { id: 'fantasy-film', name: { ka: 'ფენტეზი', en: 'Fantasy' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'music',
+                    name: { ka: '🎵 III. მუსიკა', en: '🎵 III. Music' },
+                    subSections: [
+                        {
+                            id: 'music-theory-elements',
+                            name: { ka: '🎼 მუსიკის თეორია და ელემენტები', en: '🎼 Music Theory and Elements' },
+                            keywords: [
+                                { id: 'chord', name: { ka: 'აკორდი', en: 'Chord' } },
+                                { id: 'accidentals', name: { ka: 'ალტერაციის ნიშნები', en: 'Accidentals' } },
+                                { id: 'scale-music', name: { ka: 'გამა', en: 'Scale' } },
+                                { id: 'dynamics', name: { ka: 'დინამიკა', en: 'Dynamics' } },
+                                { id: 'interval', name: { ka: 'ინტერვალი', en: 'Interval' } },
+                                { id: 'counterpoint', name: { ka: 'კონტრაპუნქტი', en: 'Counterpoint' } },
+                                { id: 'melody', name: { ka: 'მელოდია', en: 'Melody' } },
+                                { id: 'notation', name: { ka: 'ნოტაცია', en: 'Notation' } },
+                                { id: 'rhythm-music', name: { ka: 'რიტმი', en: 'Rhythm' } },
+                                { id: 'solfege', name: { ka: 'სოლფეჯიო', en: 'Solfège' } },
+                                { id: 'timbre-music', name: { ka: 'ტემბრი', en: 'Timbre' } },
+                                { id: 'tempo', name: { ka: 'ტემპი', en: 'Tempo' } },
+                                { id: 'tonality', name: { ka: 'ტონალობა', en: 'Tonality' } },
+                                { id: 'harmony-music', name: { ka: 'ჰარმონია', en: 'Harmony' } },
+                            ]
+                        },
+                        {
+                            id: 'music-history-eras',
+                            name: { ka: '🎻 მუსიკის ისტორია და ეპოქები', en: '🎻 History and Eras of Music' },
+                            keywords: [
+                                { id: 'avant-garde', name: { ka: 'ავანგარდი', en: 'Avant-garde' } },
+                                { id: 'baroque-music', name: { ka: 'ბაროკო (ბახი, ვივალდი)', en: 'Baroque (Bach, Vivaldi)' } },
+                                { id: 'impressionism-music', name: { ka: 'იმპრესიონიზმი', en: 'Impressionism' } },
+                                { id: 'classical-music-era', name: { ka: 'კლასიციზმი (მოცარტი, ბეთჰოვენი)', en: 'Classical (Mozart, Beethoven)' } },
+                                { id: 'minimalism-music', name: { ka: 'მინიმალიზმი', en: 'Minimalism' } },
+                                { id: 'modernism-music', name: { ka: 'მოდერნიზმი', en: 'Modernism' } },
+                                { id: 'neoclassicism-music', name: { ka: 'ნეოკლასიციზმი', en: 'Neoclassicism' } },
+                                { id: 'romanticism-music', name: { ka: 'რომანტიზმი (შოპენი, ლისტი)', en: 'Romanticism (Chopin, Liszt)' } },
+                                { id: 'serialism', name: { ka: 'სერიალიზმი', en: 'Serialism' } },
+                            ]
+                        },
+                        {
+                            id: 'music-genres',
+                            name: { ka: '🎶 მუსიკალური ჟანრები', en: '🎶 Music Genres' },
+                            keywords: [
+                                { id: 'aria', name: { ka: 'არია', en: 'Aria' } },
+                                { id: 'blues', name: { ka: 'ბლუზი', en: 'Blues' } },
+                                { id: 'jazz', name: { ka: 'ჯაზი (სვინგი, ბიბოპი, ფიუჟენი)', en: 'Jazz (Swing, Bebop, Fusion)' } },
+                                { id: 'electronic-music', name: { ka: 'ელექტრონული მუსიკა (ტექნო, ჰაუსი, ემბიენთი)', en: 'Electronic music (Techno, House, Ambient)' } },
+                                { id: 'chamber-music', name: { ka: 'კამერული მუსიკა', en: 'Chamber music' } },
+                                { id: 'classical-music', name: { ka: 'კლასიკური მუსიკა', en: 'Classical music' } },
+                                { id: 'concerto', name: { ka: 'კონცერტი', en: 'Concerto' } },
+                                { id: 'opera', name: { ka: 'ოპერა', en: 'Opera' } },
+                                { id: 'pop-music', name: { ka: 'პოპ-მუსიკა', en: 'Pop music' } },
+                                { id: 'rap-hip-hop', name: { ka: 'რეპი/ჰიპ-ჰოპი', en: 'Rap/Hip-hop' } },
+                                { id: 'rock-music', name: { ka: 'როკი (კლასიკური, ჰარდ-როკი, პანკი, მეტალი, ინდი)', en: 'Rock (Classic, Hard rock, Punk, Metal, Indie)' } },
+                                { id: 'symphony', name: { ka: 'სიმფონია', en: 'Symphony' } },
+                                { id: 'sonata', name: { ka: 'სონატა', en: 'Sonata' } },
+                                { id: 'folk-music', name: { ka: 'ფოლკლორული მუსიკა', en: 'Folk music' } },
+                                { id: 'world-music', name: { ka: 'World Music', en: 'World Music' } },
+                            ]
+                        },
+                        {
+                            id: 'musical-performance',
+                            name: { ka: '🎤 მუსიკალური შესრულება', en: '🎤 Musical Performance' },
+                            keywords: [
+                                { id: 'a-cappella', name: { ka: 'აკაპელა', en: 'A cappella' } },
+                                { id: 'ensemble', name: { ka: 'ანსამბლი', en: 'Ensemble' } },
+                                { id: 'arrangement', name: { ka: 'არანჟირება', en: 'Arrangement' } },
+                                { id: 'vocals', name: { ka: 'ვოკალი', en: 'Vocals' } },
+                                { id: 'conductor', name: { ka: 'დირიჟორი', en: 'Conductor' } },
+                                { id: 'instrument', name: { ka: 'ინსტრუმენტი', en: 'Instrument' } },
+                                { id: 'composer', name: { ka: 'კომპოზიტორი', en: 'Composer' } },
+                                { id: 'composition-music', name: { ka: 'კომპოზიცია', en: 'Composition' } },
+                                { id: 'orchestra', name: { ka: 'ორკესტრი', en: 'Orchestra' } },
+                                { id: 'orchestration', name: { ka: 'ორკესტრირება', en: 'Orchestration' } },
+                                { id: 'score', name: { ka: 'პარტიტურა', en: 'Score' } },
+                                { id: 'solo', name: { ka: 'სოლო', en: 'Solo' } },
+                                { id: 'voice-types', name: { ka: 'ხმის ტიპები (სოპრანო, ტენორი, ბანი)', en: 'Voice types (Soprano, Tenor, Bass)' } },
+                                { id: 'choir', name: { ka: 'გუნდი', en: 'Choir' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'dance-choreography',
+                    name: { ka: '💃 IV. ცეკვა და ქორეოგრაფია', en: '💃 IV. Dance and Choreography' },
+                    subSections: [
+                        {
+                            id: 'dance-styles-directions',
+                            name: { ka: '🕺 ცეკვის სტილები და მიმართულებები', en: '🕺 Dance Styles and Directions' },
+                            keywords: [
+                                { id: 'ballet', name: { ka: 'ბალეტი', en: 'Ballet' } },
+                                { id: 'breakdance', name: { ka: 'ბრეიქდანსი', en: 'Breakdance' } },
+                                { id: 'waltz', name: { ka: 'ვალსი', en: 'Waltz' } },
+                                { id: 'modern-dance', name: { ka: 'თანამედროვე ცეკვა (მოდერნი, კონტემპორარი)', en: 'Modern dance (Modern, Contemporary)' } },
+                                { id: 'tango', name: { ka: 'ტანგო', en: 'Tango' } },
+                                { id: 'improvisation-dance', name: { ka: 'იმპროვიზაცია', en: 'Improvisation' } },
+                                { id: 'classical-ballet', name: { ka: 'კლასიკური ბალეტი', en: 'Classical ballet' } },
+                                { id: 'pointe-shoes', name: { ka: 'პუანტები', en: 'Pointe shoes' } },
+                                { id: 'ballroom-dance', name: { ka: 'სამეჯლისო ცეკვები', en: 'Ballroom dance' } },
+                                { id: 'samba', name: { ka: 'სამბა', en: 'Samba' } },
+                                { id: 'salsa', name: { ka: 'სალსა', en: 'Salsa' } },
+                                { id: 'flamenco', name: { ka: 'ფლამენკო', en: 'Flamenco' } },
+                                { id: 'georgian-folk-dances', name: { ka: 'ქართული ხალხური ცეკვები', en: 'Georgian folk dances' } },
+                                { id: 'street-dance', name: { ka: 'ქუჩის ცეკვები (ჰიპ-ჰოპი)', en: 'Street dance (Hip-hop)' } },
+                            ]
+                        },
+                        {
+                            id: 'choreography',
+                            name: { ka: '👯 ქორეოგრაფია', en: '👯 Choreography' },
+                            keywords: [
+                                { id: 'movement', name: { ka: 'მოძრაობა', en: 'Movement' } },
+                                { id: 'dance-composition', name: { ka: 'საცეკვაო კომპოზიცია', en: 'Dance composition' } },
+                                { id: 'staging-dance', name: { ka: 'სცენური დადგმა', en: 'Staging' } },
+                                { id: 'choreographer', name: { ka: 'ქორეოგრაფი', en: 'Choreographer' } },
+                                { id: 'choreography-term', name: { ka: 'ქორეოგრაფია', en: 'Choreography' } },
+                                { id: 'synchronization', name: { ka: 'სინქრონი', en: 'Synchronization' } },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'modern-experimental-forms',
+                    name: { ka: '🌟 V. თანამედროვე და ექსპერიმენტული ფორმები', en: '🌟 V. Modern and Experimental Forms' },
+                    subSections: [
+                        {
+                            id: 'performance-hybrid-art',
+                            name: { ka: '✨ პერფორმანსი და ჰიბრიდული ხელოვნება', en: '✨ Performance and Hybrid Art' },
+                            keywords: [
+                                { id: 'actionism', name: { ka: 'აქციონიზმი', en: 'Actionism' } },
+                                { id: 'collaborative-project', name: { ka: 'კოლაბორაციული პროექტი', en: 'Collaborative project' } },
+                                { id: 'net-art', name: { ka: 'Net Art', en: 'Net Art' } },
+                                { id: 'performance-art', name: { ka: 'პერფორმანს-არტი', en: 'Performance art' } },
+                                { id: 'performance-installation', name: { ka: 'პერფორმანს-ინსტალაცია', en: 'Performance installation' } },
+                                { id: 'happening', name: { ka: 'ჰეფენინგი', en: 'Happening' } },
+                                { id: 'hybrid-performance', name: { ka: 'ჰიბრიდული პერფორმანსი (თეატრი+მედია, ცეკვა+VR)', en: 'Hybrid performance (Theatre+Media, Dance+VR)' } },
+                            ]
+                        },
+                        {
+                            id: 'audiovisual-technological-art',
+                            name: { ka: '💽 აუდიო-ვიზუალური და ტექნოლოგიური ხელოვნება', en: '💽 Audiovisual and Technological Art' },
+                            keywords: [
+                                { id: 'audiovisual-immersion', name: { ka: 'აუდიო-ვიზუალური იმერსია', en: 'Audiovisual immersion' } },
+                                { id: 'video-art-tech', name: { ka: 'ვიდეო არტი', en: 'Video art' } },
+                                { id: 'video-installation-tech', name: { ka: 'ვიდეო ინსტალაცია', en: 'Video installation' } },
+                                { id: 'interactive-installation', name: { ka: 'ინტერაქტიული ინსტალაცია', en: 'Interactive installation' } },
+                                { id: 'laser-art', name: { ka: 'ლაზერი', en: 'Laser' } },
+                                { id: 'projection', name: { ka: 'პროექცია', en: 'Projection' } },
+                                { id: 'mixed-reality', name: { ka: 'შერეული რეალობა (Mixed Reality)', en: 'Mixed Reality' } },
+                                { id: 'hologram', name: { ka: 'ჰოლოგრამა', en: 'Hologram' } },
+                            ]
+                        },
+                        {
+                            id: 'other-forms',
+                            name: { ka: '🤡 სხვა ფორმები', en: '🤡 Other Forms' },
+                            keywords: [
+                                { id: 'acrobatics', name: { ka: 'აკრობატიკა', en: 'Acrobatics' } },
+                                { id: 'juggling', name: { ka: 'ჟონგლირება', en: 'Juggling' } },
+                                { id: 'illusion', name: { ka: 'ილუზია', en: 'Illusion' } },
+                                { id: 'clowning', name: { ka: 'კლოუნადა', en: 'Clowning' } },
+                                { id: 'monologue-other', name: { ka: 'მონოლოგი', en: 'Monologue' } },
+                                { id: 'aerial-gymnastics', name: { ka: 'საჰაერო ტანვარჯიში', en: 'Aerial gymnastics' } },
+                                { id: 'stand-up-comedy', name: { ka: 'სტენდაპ კომედია', en: 'Stand-up comedy' } },
+                                { id: 'circus', name: { ka: 'ცირკი', en: 'Circus' } },
+                                { id: 'humor-other', name: { ka: 'იუმორი', en: 'Humor' } },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+    ],
+};

@@ -1,45 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { PaperProvider } from 'react-native-paper';
+import AppNavigator from './src/navigation/AppNavigator';
+import { LocalizationProvider } from './src/context/LocalizationContext';
+import { AuthProvider } from './src/context/AuthContext';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+// App.tsx არის ჩვენი აპლიკაციის მთავარი "ასაწყობი" ფაილი.
+function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    // 1. PaperProvider: ეს კომპონენტი უზრუნველყოფს, რომ ჩვენი ახალი დიზაინის
+    // კომპონენტები (ღილაკები, ბარათები) ხელმისაწვდომი იყოს მთელ აპლიკაციაში.
+    <PaperProvider>
+      {/* 2. LocalizationProvider: ეს "ახსოვს" მომხმარებლის მიერ არჩეულ ენას. */}
+      <LocalizationProvider>
+        {/* 3. AuthProvider: ეს "ახსოვს" მომხმარებლის სახელს. */}
+        <AuthProvider>
+          {/* 4. AppNavigator: ჩვენი აპლიკაციის "ტვინი". ის ახლა ხედავს
+              ყველა ზედა პროვაიდერის მონაცემებს და შეუძლია მიიღოს სწორი
+              გადაწყვეტილება, თუ რომელი ეკრანი აჩვენოს. */}
+          <AppNavigator />
+        </AuthProvider>
+      </LocalizationProvider>
+    </PaperProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
