@@ -16,7 +16,7 @@ function App(): React.JSX.Element {
         <AuthProvider>
           {/* 4. AppNavigator: ჩვენი აპლიკაციის "ტვინი". ის ახლა ხედავს
               ყველა ზედა პროვაიდერის მონაცემებს და შეუძლია მიიღოს სწორი
-              გადაწყვეტილება, თუ რომელი ეკრანი აჩვენოს. */}
+              გადაწყვეტილება, თუ რომელი ეკრანი აჩვენოს.  toko*/}
           <AppNavigator />
         </AuthProvider>
       </LocalizationProvider>
