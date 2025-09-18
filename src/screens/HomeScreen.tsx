@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, StatusBar, LayoutChangeEvent, StyleProp, TextStyle } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, Easing } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, Easing, withRepeat, withSequence } from 'react-native-reanimated';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 
 const SPLASH_DURATION = 3500;
 const WORD_TO_ANIMATE = "სიტყვაობანა";
 
-// --- ცვლილება #1: ვქმნით ტიპების აღწერას (ინსტრუქციას) ---
-// ეს ეუბნება TypeScript-ს, თუ რა ტიპის props-ებს უნდა ელოდოს AnimatedLetter კომპონენტი.
 type AnimatedLetterProps = {
   char: string;
   index: number;
@@ -17,15 +15,11 @@ type AnimatedLetterProps = {
   style: StyleProp<TextStyle>;
 };
 
-// --- ცვლილება #2: კომპონენტს ვანიჭებთ ახლად შექმნილ ტიპებს ---
-// React.FC<AnimatedLetterProps> ნიშნავს, რომ ეს არის React-ის ფუნქციური კომპონენტი,
-// რომელიც იყენებს AnimatedLetterProps "ინსტრუქციას".
 const AnimatedLetter: React.FC<AnimatedLetterProps> = ({ char, index, onLayout, style }) => {
     const opacity = useSharedValue(0);
     const translateY = useSharedValue(10);
 
     useEffect(() => {
-        // თითოეული ასო გამოჩნდება 100 მილიწამის დაყოვნებით
         opacity.value = withDelay(index * 100, withTiming(1, { duration: 400 }));
         translateY.value = withDelay(index * 100, withTiming(0, { duration: 400 }));
     }, []);
@@ -47,7 +41,6 @@ const AnimatedLetter: React.FC<AnimatedLetterProps> = ({ char, index, onLayout, 
     );
 };
 
-
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation }: Props) => {
@@ -55,6 +48,7 @@ const HomeScreen = ({ navigation }: Props) => {
     const [layouts, setLayouts] = useState<{ [key: string]: { x: number, width: number } }>({});
     const dotX = useSharedValue(0);
     const rotation = useSharedValue(0);
+    const dotY = useSharedValue(0);
 
     const handleLayout = (char: string, index: number, event: LayoutChangeEvent) => {
         const { x, width } = event.nativeEvent.layout;
@@ -65,6 +59,7 @@ const HomeScreen = ({ navigation }: Props) => {
         return {
             transform: [
                 { translateX: dotX.value },
+                { translateY: dotY.value },
                 { rotate: `${rotation.value}deg` },
             ],
         };
@@ -81,11 +76,12 @@ const HomeScreen = ({ navigation }: Props) => {
         const letters = WORD_TO_ANIMATE.split('');
         if (Object.keys(layouts).length === letters.length) {
             const firstLetterLayout = layouts[`${letters[0]}_0`];
+            // --- აი ეს ხაზი გასწორდა ---
             const lastLetterLayout = layouts[`${letters[letters.length - 1]}_${letters.length - 1}`];
 
             dotX.value = firstLetterLayout.x;
             const animationDuration = 2800;
-            const startDelay = 500; // დაყოვნება გავზარდეთ, რომ ასოებმა გამოჩენა მოასწრონ
+            const startDelay = 500;
 
             dotX.value = withDelay(startDelay, withTiming(
                 lastLetterLayout.x + lastLetterLayout.width - 30,
@@ -95,8 +91,21 @@ const HomeScreen = ({ navigation }: Props) => {
                 360 * 3,
                 { duration: animationDuration, easing: Easing.linear }
             ));
+
+            const bounceHeight = -25;
+            const bounces = 5;
+            const singleBounceDuration = animationDuration / bounces;
+
+            dotY.value = withDelay(startDelay, withRepeat(
+                withSequence(
+                    withTiming(bounceHeight, { duration: singleBounceDuration / 2, easing: Easing.out(Easing.ease) }),
+                    withTiming(0, { duration: singleBounceDuration / 2, easing: Easing.in(Easing.ease) })
+                ),
+                bounces,
+                false
+            ));
         }
-    }, [layouts, dotX, rotation]);
+    }, [layouts, dotX, rotation, dotY]);
 
     return (
         <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
