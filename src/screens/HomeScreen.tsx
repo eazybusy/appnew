@@ -1,126 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, StatusBar, LayoutChangeEvent, StyleProp, TextStyle } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, StatusBar, Platform } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, Easing, withRepeat, withSequence } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay } from 'react-native-reanimated';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 
-const SPLASH_DURATION = 3500;
-const WORD_TO_ANIMATE = "სიტყვაობანა";
+const WORD_1 = "სიტყვაობანა";
+const WORD_2 = "WordPlay";
+const NAVIGATION_DELAY = 5000; // გავზარდეთ დრო 5 წამამდე
 
+// --- ახალი, უნივერსალური კომპონენტი ასოების ანიმაციისთვის ---
 type AnimatedLetterProps = {
   char: string;
   index: number;
-  onLayout: (event: LayoutChangeEvent) => void;
-  style: StyleProp<TextStyle>;
+  totalLetters: number;
+  isReversed?: boolean; // მარჯვნიდან მარცხნივ ეფექტისთვის
+  appear: boolean;
 };
 
-const AnimatedLetter: React.FC<AnimatedLetterProps> = ({ char, index, onLayout, style }) => {
+const AnimatedLetter: React.FC<AnimatedLetterProps> = ({ char, index, totalLetters, isReversed = false, appear }) => {
     const opacity = useSharedValue(0);
-    const translateY = useSharedValue(10);
-
-    useEffect(() => {
-        opacity.value = withDelay(index * 100, withTiming(1, { duration: 400 }));
-        translateY.value = withDelay(index * 100, withTiming(0, { duration: 400 }));
-    }, []);
+    const translateY = useSharedValue(20);
 
     const animatedStyle = useAnimatedStyle(() => ({
         opacity: opacity.value,
         transform: [{ translateY: translateY.value }],
     }));
 
+    React.useEffect(() => {
+        // ვიანგარიშებთ დაყოვნებას მიმართულების მიხედვით
+        const delay = isReversed ? (totalLetters - 1 - index) * 80 : index * 80;
+        
+        // ვანიმირებთ გამოჩენას ან გაქრობას `appear` ცვლადის მიხედვით
+        opacity.value = withDelay(delay, withTiming(appear ? 1 : 0, { duration: 400 }));
+        translateY.value = withDelay(delay, withTiming(appear ? 0 : 20, { duration: 400 }));
+    }, [appear]);
+
     return (
         <Animated.View style={animatedStyle}>
-            <Text
-                variant="displayMedium"
-                style={style}
-                onLayout={onLayout}>
-                {char}
-            </Text>
+            <Text variant="displayMedium" style={styles.letter}>{char}</Text>
         </Animated.View>
     );
 };
+
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation }: Props) => {
     const theme = useTheme();
-    const [layouts, setLayouts] = useState<{ [key: string]: { x: number, width: number } }>({});
-    const dotX = useSharedValue(0);
-    const rotation = useSharedValue(0);
-    const dotY = useSharedValue(0);
+    // state-ები, რომლებიც მართავენ ანიმაციის ფაზებს
+    const [phase, setPhase] = React.useState(1); // 1:ჩნდება, 2:ქრება, 3:ჩნდება ახალი
 
-    const handleLayout = (char: string, index: number, event: LayoutChangeEvent) => {
-        const { x, width } = event.nativeEvent.layout;
-        setLayouts(prev => ({ ...prev, [`${char}_${index}`]: { x, width } }));
-    };
+    React.useEffect(() => {
+        // ანიმაციის სრული თანმიმდევრობა
+        const t1 = setTimeout(() => setPhase(2), 2000); // 2 წამის შემდეგ ვიწყებთ გაქრობას
+        const t2 = setTimeout(() => setPhase(3), 3000); // 3 წამის შემდეგ ვაჩენთ ახალ სიტყვას
 
-    const animatedDotStyle = useAnimatedStyle(() => {
-        return {
-            transform: [
-                { translateX: dotX.value },
-                { translateY: dotY.value },
-                { rotate: `${rotation.value}deg` },
-            ],
-        };
-    });
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
+        // ნავიგაცია 5 წამის შემდეგ
+        const navTimer = setTimeout(() => {
             navigation.replace('LanguageSelection');
-        }, SPLASH_DURATION);
-        return () => clearTimeout(timer);
+        }, NAVIGATION_DELAY);
+
+        return () => {
+            clearTimeout(t1);
+            clearTimeout(t2);
+            clearTimeout(navTimer);
+        };
     }, [navigation]);
     
-    useEffect(() => {
-        const letters = WORD_TO_ANIMATE.split('');
-        if (Object.keys(layouts).length === letters.length) {
-            const firstLetterLayout = layouts[`${letters[0]}_0`];
-            // --- აი ეს ხაზი გასწორდა ---
-            const lastLetterLayout = layouts[`${letters[letters.length - 1]}_${letters.length - 1}`];
-
-            dotX.value = firstLetterLayout.x;
-            const animationDuration = 2800;
-            const startDelay = 500;
-
-            dotX.value = withDelay(startDelay, withTiming(
-                lastLetterLayout.x + lastLetterLayout.width - 30,
-                { duration: animationDuration, easing: Easing.inOut(Easing.ease) }
-            ));
-            rotation.value = withDelay(startDelay, withTiming(
-                360 * 3,
-                { duration: animationDuration, easing: Easing.linear }
-            ));
-
-            const bounceHeight = -25;
-            const bounces = 5;
-            const singleBounceDuration = animationDuration / bounces;
-
-            dotY.value = withDelay(startDelay, withRepeat(
-                withSequence(
-                    withTiming(bounceHeight, { duration: singleBounceDuration / 2, easing: Easing.out(Easing.ease) }),
-                    withTiming(0, { duration: singleBounceDuration / 2, easing: Easing.in(Easing.ease) })
-                ),
-                bounces,
-                false
-            ));
-        }
-    }, [layouts, dotX, rotation, dotY]);
-
     return (
         <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
             <StatusBar barStyle="dark-content" backgroundColor={theme.colors.background} />
+
             <View style={styles.wordContainer}>
-                <Animated.View style={[styles.jumpingDot, { backgroundColor: theme.colors.primary }, animatedDotStyle]}>
-                    <Text style={styles.dotText}>Word Play</Text>
-                </Animated.View>
-                {WORD_TO_ANIMATE.split('').map((char, index) => (
+                {phase < 3 && WORD_1.split('').map((char, index) => (
                     <AnimatedLetter
-                        key={`${char}_${index}`}
+                        key={`word1_${index}`}
                         char={char}
                         index={index}
-                        style={[styles.letter, { color: theme.colors.primary }]}
-                        onLayout={(event) => handleLayout(char, index, event)}
+                        totalLetters={WORD_1.length}
+                        appear={phase === 1} // გამოჩნდეს, თუ პირველი ფაზაა
+                    />
+                ))}
+                
+                {phase === 3 && WORD_2.split('').map((char, index) => (
+                     <AnimatedLetter
+                        key={`word2_${index}`}
+                        char={char}
+                        index={index}
+                        totalLetters={WORD_2.length}
+                        appear={true} // ამ ფაზაში ყოველთვის ჩანს
+                        isReversed={true} // მარჯვნიდან მარცხნივ
                     />
                 ))}
             </View>
@@ -136,24 +106,32 @@ const styles = StyleSheet.create({
     },
     wordContainer: {
         flexDirection: 'row',
-        position: 'relative',
+        // დავამატეთ ჩრდილის სტილები, რომელიც ორივე სიტყვაზე იმოქმედებს
+        ...Platform.select({
+            ios: {
+                shadowColor: '#0f0f0fff',
+                shadowOffset: { width: 5, height: 10 },
+                shadowOpacity: 5,
+                shadowRadius: 3,
+            },
+            android: {
+                shadowColor: '#0a0a0aff',
+                shadowOffset: { width: 5, height: 10 },
+                shadowOpacity: 5,
+                shadowRadius: 3,
+                // Android-ზე ჩრდილი ასოებს ცალ-ცალკე ექნებათ
+            },
+        }),
     },
     letter: {
         fontWeight: 'bold',
-    },
-    jumpingDot: {
-        width: 45,
-        height: 45,
-        borderRadius: 5,
-        position: 'absolute',
-        top: -40,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    dotText: {
-        color: 'white',
-        fontSize: 10,
-        fontWeight: 'bold',
+        color: '#333',
+        fontSize: 36,
+         ...Platform.select({
+            android: {
+                elevation: 5,
+            }
+        })
     },
 });
 
