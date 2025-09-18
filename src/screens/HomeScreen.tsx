@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, StatusBar, LayoutChangeEvent } from 'react-native';
+import { View, StyleSheet, StatusBar, LayoutChangeEvent, StyleProp, TextStyle } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, Easing } from 'react-native-reanimated';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -8,12 +8,50 @@ import { RootStackParamList } from '../navigation/types';
 const SPLASH_DURATION = 3500;
 const WORD_TO_ANIMATE = "სიტყვაობანა";
 
-// 1. ვუბრუნებთ ნავიგაციის props-ებს
+// --- ცვლილება #1: ვქმნით ტიპების აღწერას (ინსტრუქციას) ---
+// ეს ეუბნება TypeScript-ს, თუ რა ტიპის props-ებს უნდა ელოდოს AnimatedLetter კომპონენტი.
+type AnimatedLetterProps = {
+  char: string;
+  index: number;
+  onLayout: (event: LayoutChangeEvent) => void;
+  style: StyleProp<TextStyle>;
+};
+
+// --- ცვლილება #2: კომპონენტს ვანიჭებთ ახლად შექმნილ ტიპებს ---
+// React.FC<AnimatedLetterProps> ნიშნავს, რომ ეს არის React-ის ფუნქციური კომპონენტი,
+// რომელიც იყენებს AnimatedLetterProps "ინსტრუქციას".
+const AnimatedLetter: React.FC<AnimatedLetterProps> = ({ char, index, onLayout, style }) => {
+    const opacity = useSharedValue(0);
+    const translateY = useSharedValue(10);
+
+    useEffect(() => {
+        // თითოეული ასო გამოჩნდება 100 მილიწამის დაყოვნებით
+        opacity.value = withDelay(index * 100, withTiming(1, { duration: 400 }));
+        translateY.value = withDelay(index * 100, withTiming(0, { duration: 400 }));
+    }, []);
+
+    const animatedStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value,
+        transform: [{ translateY: translateY.value }],
+    }));
+
+    return (
+        <Animated.View style={animatedStyle}>
+            <Text
+                variant="displayMedium"
+                style={style}
+                onLayout={onLayout}>
+                {char}
+            </Text>
+        </Animated.View>
+    );
+};
+
+
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation }: Props) => {
     const theme = useTheme();
-    // ...ანიმაციის ლოგიკა უცვლელია...
     const [layouts, setLayouts] = useState<{ [key: string]: { x: number, width: number } }>({});
     const dotX = useSharedValue(0);
     const rotation = useSharedValue(0);
@@ -32,16 +70,13 @@ const HomeScreen = ({ navigation }: Props) => {
         };
     });
 
-    // 2. ვასწორებთ ნავიგაციის ლოგიკას
     useEffect(() => {
         const timer = setTimeout(() => {
-            // ანიმაციის შემდეგ ყოველთვის გადავდივართ ენის არჩევის ეკრანზე
             navigation.replace('LanguageSelection');
         }, SPLASH_DURATION);
-
         return () => clearTimeout(timer);
     }, [navigation]);
-
+    
     useEffect(() => {
         const letters = WORD_TO_ANIMATE.split('');
         if (Object.keys(layouts).length === letters.length) {
@@ -50,7 +85,7 @@ const HomeScreen = ({ navigation }: Props) => {
 
             dotX.value = firstLetterLayout.x;
             const animationDuration = 2800;
-            const startDelay = 200;
+            const startDelay = 500; // დაყოვნება გავზარდეთ, რომ ასოებმა გამოჩენა მოასწრონ
 
             dotX.value = withDelay(startDelay, withTiming(
                 lastLetterLayout.x + lastLetterLayout.width - 30,
@@ -71,13 +106,13 @@ const HomeScreen = ({ navigation }: Props) => {
                     <Text style={styles.dotText}>Word Play</Text>
                 </Animated.View>
                 {WORD_TO_ANIMATE.split('').map((char, index) => (
-                    <Text
+                    <AnimatedLetter
                         key={`${char}_${index}`}
-                        variant="displayMedium"
+                        char={char}
+                        index={index}
                         style={[styles.letter, { color: theme.colors.primary }]}
-                        onLayout={(event) => handleLayout(char, index, event)}>
-                        {char}
-                    </Text>
+                        onLayout={(event) => handleLayout(char, index, event)}
+                    />
                 ))}
             </View>
         </View>
@@ -114,5 +149,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-
-
