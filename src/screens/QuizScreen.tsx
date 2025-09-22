@@ -98,14 +98,16 @@ const QuizScreen = ({ route, navigation }: Props) => {
         const correctAnswer = currentQuestion.name[answerLanguage as keyof LocalizedName];
 
         if (answer.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
-            setScore(score + 1);
-            setTimeLeft(prev => prev + 2);
-            triggerBonusAnimation();
-            setTimeout(() => handleNext(true), 1500);
-        } else {
-            setIncorrectAnswers(prev => [...prev, currentQuestion]);
-            setShowNextButton(true);
-        }
+    setScore(score + 1);
+    setTimeLeft(prev => prev + 2);
+    triggerBonusAnimation();
+    setTimeout(() => handleNext(true), 1500);
+} else {
+    setIncorrectAnswers(prev => [...prev, currentQuestion]);
+    setSelectedOption(answer); // ხაზს უსვამს არასწორ პასუხს
+    setIsAnswered(true);       // ხაზს უსვამს პასუხის დასრულებას
+    setTimeout(() => handleNext(false), 1500); // ავტომატურად გადადის შემდეგ კითხვაზე
+}
         setSelectedOption(answer);
         if (difficulty === 'hard') setUserTextInput(correctAnswer);
     };
