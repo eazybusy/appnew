@@ -6,14 +6,20 @@ import { useAuth } from '../context/AuthContext';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
 
+// import { useAppTheme } from '../context/ThemeContext'; // <-- თუ დაგჭირდებათ toggleTheme ფუნქცია
+
 type Props = NativeStackScreenProps<RootStackParamList, 'UserNameInput'>;
 
 const UserNameInputScreen = ({ navigation }: Props) => {
     const { t } = useLocalization();
     const { signIn } = useAuth();
-    const theme = useTheme();
+    // იყენებს Paper-ის თემის ობიექტს (რომელიც ჩვენს პერსონალურ ფერებს შეიცავს)
+    const theme = useTheme(); 
     const [name, setName] = useState('');
     const [isError, setIsError] = useState(false);
+
+    // ამ ცვლადით განვსაზღვრავთ, რა სტილი უნდა მივცეთ სტატუსის ზოლს (თეთრი ტექსტი მუქ ფონზე და პირიქით)
+    const statusBarStyle = theme.dark ? 'light-content' : 'dark-content';
 
     const handleContinue = async () => {
         if (name.trim().length < 2) {
@@ -26,15 +32,24 @@ const UserNameInputScreen = ({ navigation }: Props) => {
     };
 
     return (
+        // ფონის ფერი: იყენებს theme.colors.background-ს
         <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.colors.background }]}>
-            <StatusBar barStyle="dark-content" />
+            {/* სტატუსის ზოლის ფერის დინამიურად დაყენება */}
+            <StatusBar barStyle={statusBarStyle} backgroundColor={theme.colors.background} />
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={styles.container}
             >
                 <View style={styles.content}>
                     <Text variant="headlineMedium" style={styles.title}>{t('userNameTitle')}</Text>
-                    <Text variant="bodyLarge" style={styles.subtitle}>{t('userNameSubtitle')}</Text>
+                    
+                    {/* subtitle-ის ფერი: ჩავანაცვლეთ ხისტი 'gray' ფერით თემის ფერი */}
+                    <Text 
+                        variant="bodyLarge" 
+                        style={[styles.subtitle, { color: theme.colors.onSurfaceVariant }]}
+                    >
+                        {t('userNameSubtitle')}
+                    </Text>
 
                     <TextInput
                         label={t('userNameLabel')}
@@ -72,11 +87,11 @@ const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'center' },
     content: { padding: 20 },
     title: { textAlign: 'center', marginBottom: 8 },
-    subtitle: { color: 'gray', textAlign: 'center', marginBottom: 32 },
+    // subtitle სტილს აღარ სჭირდება ხისტი ფერი, რადგან მას პირდაპირ ვაძლევთ კომპონენტზე
+    subtitle: { textAlign: 'center', marginBottom: 32 }, 
     input: { width: '100%' },
     button: { marginTop: 16, borderRadius: 8 },
     buttonContent: { height: 48 },
 });
 
 export default UserNameInputScreen;
-

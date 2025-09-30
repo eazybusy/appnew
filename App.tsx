@@ -1,26 +1,38 @@
+// App.tsx
 import React from 'react';
 import { PaperProvider } from 'react-native-paper';
 import AppNavigator from './src/navigation/AppNavigator';
 import { LocalizationProvider } from './src/context/LocalizationContext';
 import { AuthProvider } from './src/context/AuthContext';
+import { ThemeProvider, useAppTheme } from './src/context/ThemeContext'; // <-- იმპორტი
 
-// App.tsx არის ჩვენი აპლიკაციის მთავარი "ასაწყობი" ფაილი.
-function App(): React.JSX.Element {
+// --- ახალი Root კომპონენტი PaperProvider-ისთვის ---
+// ეს კომპონენტი იღებს აქტიურ თემას ThemeProvider-დან და გადასცემს მას PaperProvider-ს
+const AppWrapper = () => {
+  // 1. Paper-ის აქტიური თემის მიღება
+  const { theme } = useAppTheme();
+
   return (
-    // 1. PaperProvider: ეს კომპონენტი უზრუნველყოფს, რომ ჩვენი ახალი დიზაინის
-    // კომპონენტები (ღილაკები, ბარათები) ხელმისაწვდომი იყოს მთელ აპლიკაციაში.
-    <PaperProvider>
-      {/* 2. LocalizationProvider: ეს "ახსოვს" მომხმარებლის მიერ არჩეულ ენას. */}
+    // 2. PaperProvider-ისთვის Paper-ის თემის გადაცემა
+    <PaperProvider theme={theme}>
+      {/* 3. PaperProvider-ის შიგნით არსებული პროვაიდერები */}
       <LocalizationProvider>
-        {/* 3. AuthProvider: ეს "ახსოვს" მომხმარებლის სახელს. */}
         <AuthProvider>
-          {/* 4. AppNavigator: ჩვენი აპლიკაციის "ტვინი". ის ახლა ხედავს
-              ყველა ზედა პროვაიდერის მონაცემებს და შეუძლია მიიღოს სწორი
-              გადაწყვეტილება, თუ რომელი ეკრანი აჩვენოს.  toko*/}
           <AppNavigator />
         </AuthProvider>
       </LocalizationProvider>
     </PaperProvider>
+  );
+};
+
+// --- მთავარი App კომპონენტი ---
+// ეს კომპონენტი უზრუნველყოფს ThemeProvider-ს მთელი აპლიკაციისთვის
+function App(): React.JSX.Element {
+  return (
+    // 1. ThemeProvider უნდა იყოს ყველაზე მაღლა
+    <ThemeProvider>
+      <AppWrapper />
+    </ThemeProvider>
   );
 }
 

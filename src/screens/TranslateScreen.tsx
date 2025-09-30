@@ -1,21 +1,22 @@
 import React, { useState, useMemo } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import { TextInput, Button, Card, List, Text, useTheme, Divider, IconButton } from 'react-native-paper';
 import { useLocalization } from '../context/LocalizationContext';
 import * as dataService from '../services/dataService';
-// იმპორტს ვამატებთ ახალი ტიპისთვის
 import type { TranslationResult } from '../services/dataService';
 
 const TranslateScreen = () => {
     const { t, locale } = useLocalization();
-    const theme = useTheme();
+    const theme = useTheme(); // Paper-ის თემის ობიექტი
 
     const [inputText, setInputText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
-    // ვცვლით state-ის ტიპს TranslationResult[]-ზე
     const [alternatives, setAlternatives] = useState<TranslationResult[]>([]);
     const [sourceLang, setSourceLang] = useState(locale);
     const [isNotFound, setIsNotFound] = useState(false);
+
+    // სტატუს ბარის სტილი (Dark Theme-ისთვის Light, Light Theme-ისთვის Dark)
+    const statusBarStyle = theme.dark ? 'light-content' : 'dark-content';
 
     const { sourcePlaceholder, sourceLanguageLabel, targetLanguageLabel } = useMemo(() => ({
         sourcePlaceholder: sourceLang === 'ka' ? t('translatePlaceholderKa') : t('translatePlaceholderEn'),
@@ -34,9 +35,7 @@ const TranslateScreen = () => {
         const results = dataService.findAllTranslations(inputText.trim(), sourceLang);
 
         if (results && results.length > 0) {
-            // ვიღებთ პირველი შედეგის თარგმანს
             setTranslatedText(results[0].translated); 
-            // დანარჩენი შედეგები მიდის ალტერნატივებში
             setAlternatives(results.slice(1));
             setIsNotFound(false);
         } else {
@@ -58,7 +57,14 @@ const TranslateScreen = () => {
     };
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        // 1. ScrollView-ის ფონის ფერის დამატება
+        <ScrollView 
+            style={[styles.container, { backgroundColor: theme.colors.background }]} 
+            contentContainerStyle={styles.contentContainer}
+        >
+            {/* 2. სტატუსის ზოლის ფერის დინამიურად დაყენება */}
+            <StatusBar barStyle={statusBarStyle} backgroundColor={theme.colors.background} />
+
             <Card style={styles.card}>
                 <Card.Content>
                     <TextInput
@@ -78,7 +84,11 @@ const TranslateScreen = () => {
                         style={styles.switchButton}
                     />
 
-                    <View style={styles.outputContainer}>
+                    {/* 3. Output Container-ის ფონის დინამიურად დაყენება */}
+                    <View style={[
+                        styles.outputContainer, 
+                        { backgroundColor: theme.colors.surfaceVariant } // გამოიყენეთ Paper-ის მეორადი ფონი (surfaceVariant)
+                    ]}>
                         <Text style={[styles.languageLabel, { color: theme.colors.onSurfaceVariant }]}>
                             {targetLanguageLabel}
                         </Text>
@@ -107,9 +117,7 @@ const TranslateScreen = () => {
                         {alternatives.map((item, index) => (
                             <React.Fragment key={index}>
                                 <List.Item
-                                    // სათაურად ვაჩენთ ნაპოვნ სიტყვას
                                     title={item.original}
-                                    // აღწერაში კი მის თარგმანს
                                     description={item.translated}
                                     left={props => <List.Icon {...props} icon="circle-small" />}
                                 />
@@ -126,6 +134,7 @@ const TranslateScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // ხისტი ფერი ამოღებულია და გადატანილია კომპონენტზე
     },
     contentContainer: {
         padding: 16,
@@ -143,7 +152,7 @@ const styles = StyleSheet.create({
         minHeight: 80,
         padding: 12,
         borderRadius: 8,
-        backgroundColor: '#f0f0f0',
+        // ხისტი ფერი (#f0f0f0) ამოღებულია და გადატანილია კომპონენტზე
         justifyContent: 'center',
         marginTop: 10,
     },
@@ -161,4 +170,3 @@ const styles = StyleSheet.create({
 });
 
 export default TranslateScreen;
-
