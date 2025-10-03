@@ -6,7 +6,7 @@ import { RootStackParamList } from '../navigation/types';
 import { useLocalization } from '../context/LocalizationContext';
 import { getCategoryList } from '../services/dataService';
 import { LocalizedName } from '../data/types';
-import { useTheme } from 'react-native-paper'; // <-- Hook-ის იმპორტი
+import { useTheme } from 'react-native-paper';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -15,33 +15,32 @@ const CategoryListScreen = () => {
     const { locale } = useLocalization();
     const categories = getCategoryList();
     
-    const theme = useTheme(); // <-- თემის ობიექტი
+    const theme = useTheme();
     const statusBarStyle = theme.dark ? 'light-content' : 'dark-content';
 
-    // დინამიური ფერები
     const dynamicColors = useMemo(() => ({
-        containerBackground: theme.colors.background, // #ffffffff
-        itemBackground: theme.colors.surface, // #ffffffff
+        containerBackground: theme.colors.background,
+        itemBackground: theme.colors.surface,
         itemText: theme.colors.onSurface,
-        itemShadow: theme.dark ? theme.colors.primary : '#000', // მუქ რეჟიმში ჩრდილის გაძლიერება
+        itemShadow: theme.dark ? theme.colors.primary : '#000',
     }), [theme.colors, theme.dark]);
 
     return (
-        // 1. მთავარი View-ს ფონის და სტატუსის ზოლის დინამიურად დაყენება
         <View style={[styles.container, { backgroundColor: dynamicColors.containerBackground }]}>
             <StatusBar barStyle={statusBarStyle} backgroundColor={dynamicColors.containerBackground} />
             <FlatList
                 data={categories}
                 keyExtractor={(item) => item.id}
+                // --- დამატებული ხაზი, რომელიც ამატებს ცარიელ ადგილს სიის ბოლოში ---
+                contentContainerStyle={{ paddingBottom: 100 }}
                 renderItem={({ item }) => (
                     <TouchableOpacity 
                         style={[
                             styles.itemContainer,
                             { 
-                                // 2. Item Container-ის ფონის, ჩრდილისა და სიღრმის დინამიურად დაყენება
                                 backgroundColor: dynamicColors.itemBackground, 
                                 shadowColor: dynamicColors.itemShadow,
-                                shadowOpacity: theme.dark ? 0.4 : 0.22, // მუქ რეჟიმში ჩრდილი უფრო ძლიერი
+                                shadowOpacity: theme.dark ? 0.4 : 0.22,
                             }
                         ]}
                         onPress={() => navigation.navigate('SubCategory', { 
@@ -49,7 +48,6 @@ const CategoryListScreen = () => {
                             categoryName: item.name[locale as keyof LocalizedName] 
                         })}
                     >
-                        {/* 3. ხატულა/ტექსტის ფერის დინამიურად დაყენება */}
                         <Text style={styles.icon}>{item.icon}</Text>
                         <Text style={[styles.itemText, { color: dynamicColors.itemText }]}>
                             {item.name[locale as keyof LocalizedName]}
@@ -61,7 +59,6 @@ const CategoryListScreen = () => {
     );
 };
 
-// ხისტი ფერები ამოღებულია
 const styles = StyleSheet.create({
     container: { flex: 1 },
     itemContainer: { 

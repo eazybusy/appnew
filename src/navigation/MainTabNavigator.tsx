@@ -1,23 +1,28 @@
 import React from 'react';
 import { BackHandler, Alert } from 'react-native';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native'; // useNavigation-ის იმპორტი
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { BottomNavigation, Appbar, useTheme } from 'react-native-paper';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Appbar, useTheme } from 'react-native-paper';
+import { useLocalization } from '../context/LocalizationContext';
+
+import CustomTabBar from '../components/CustomTabBar'; 
 import CategoryListScreen from '../screens/CategoryListScreen';
 import TranslateScreen from '../screens/TranslateScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import QuizSetupScreen from '../screens/QuizSetupScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
-import { useLocalization } from '../context/LocalizationContext';
-import { RootStackParamList } from './types';
+import { RootStackParamList } from './types'; // RootStackParamList-ის იმპორტი
+
+const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = () => {
     const { t } = useLocalization();
     const theme = useTheme();
+    
+    // useNavigation hook-ის გამოყენება, რათა შევძლოთ სხვა Stack-ზე გადასვლა
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-    const [index, setIndex] = React.useState(0);
 
-    // ლოგიკა, რომელიც აპლიკაციიდან გასვლისას დასტურს ითხოვს
     useFocusEffect(
         React.useCallback(() => {
             const onBackPress = () => {
@@ -32,45 +37,50 @@ const MainTabNavigator = () => {
         }, [t])
     );
 
-    // ეკრანების და მათი პარამეტრების განსაზღვრა
-    const routes = [
-        { key: 'categories', title: t('tabCategories'), focusedIcon: 'view-grid', unfocusedIcon: 'view-grid-outline' },
-        { key: 'quiz', title: t('tabQuiz'), focusedIcon: 'gamepad-variant', unfocusedIcon: 'gamepad-variant-outline' },
-        { key: 'leaderboard', title: t('tabLeaderboard'), focusedIcon: 'trophy', unfocusedIcon: 'trophy-outline' },
-        { key: 'translate', title: t('tabTranslate'), focusedIcon: 'translate', unfocusedIcon: 'translate' },
-        { key: 'favorites', title: t('tabFavorites'), focusedIcon: 'star', unfocusedIcon: 'star-outline' },
-    ];
-
-    // SceneMap აკავშირებს ეკრანის key-ს და კომპონენტს
-    const renderScene = BottomNavigation.SceneMap({
-        categories: CategoryListScreen,
-        quiz: QuizSetupScreen,
-        leaderboard: LeaderboardScreen,
-        translate: TranslateScreen,
-        favorites: FavoritesScreen,
-    });
-
     return (
-        <>
-            {/* 1. ზედა ბარი (Appbar) ენის შეცვლის ღილაკით */}
-            <Appbar.Header style={{ backgroundColor: theme.colors.primary }}>
-                <Appbar.Content title={routes[index].title} color={theme.colors.onPrimary} />
-                <Appbar.Action
-                    icon="earth" // დედამიწის ხატულა
-                    color={theme.colors.onPrimary}
-                    onPress={() => navigation.navigate('LanguageSelection')}
-                />
-            </Appbar.Header>
-            {/* 2. ქვედა ნავიგაცია (BottomNavigation) */}
-            <BottomNavigation
-                navigationState={{ index, routes }}
-                onIndexChange={setIndex}
-                renderScene={renderScene}
-                shifting={true} // ანიმაციური ეფექტი
-                activeColor={theme.colors.primary}
-                inactiveColor={theme.colors.onSurfaceVariant}
+        <Tab.Navigator
+            tabBar={(props) => <CustomTabBar {...props} />}
+            screenOptions={{
+                header: ({ options }) => { // navigation პარამეტრი აღარ გვჭირდება, რადგან hook-ით ვიღებთ
+                    return (
+                        <Appbar.Header style={{ backgroundColor: theme.colors.background }}>
+                            <Appbar.Content title={options.title} />
+                            {/* ენის შეცვლის ღილაკი */}
+                            <Appbar.Action
+                                icon="earth"
+                                onPress={() => navigation.navigate('LanguageSelection')}
+                            />
+                        </Appbar.Header>
+                    );
+                },
+            }}
+        >
+            <Tab.Screen
+                name="Categories"
+                component={CategoryListScreen}
+                options={{ title: t('tabCategories') }}
             />
-        </>
+            <Tab.Screen
+                name="Quiz"
+                component={QuizSetupScreen}
+                options={{ title: t('tabQuiz') }}
+            />
+            <Tab.Screen
+                name="Leaderboard"
+                component={LeaderboardScreen}
+                options={{ title: t('tabLeaderboard') }}
+            />
+            <Tab.Screen
+                name="Translate"
+                component={TranslateScreen}
+                options={{ title: t('tabTranslate') }}
+            />
+            <Tab.Screen
+                name="Favorites"
+                component={FavoritesScreen}
+                options={{ title: t('tabFavorites') }}
+            />
+        </Tab.Navigator>
     );
 };
 
